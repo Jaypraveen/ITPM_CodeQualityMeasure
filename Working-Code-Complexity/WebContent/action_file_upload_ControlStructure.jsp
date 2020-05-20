@@ -3,12 +3,12 @@
 <%@page import="java.nio.file.Path"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.stream.Collector"%>
-<%@page import="model.Method"%>
+<%@page import="com.model.MainMethod"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.util.regex.Matcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
+<%@ page import="java.io.*,java.util.*,javax.servlet.*"%>
 <%@ page import="javax.servlet.http.*"%>
 <%@ page import="org.apache.commons.fileupload.*"%>
 <%@ page import="org.apache.commons.fileupload.disk.*"%>
@@ -116,60 +116,183 @@ a:hover:not (.active ) {
 
 	<%
 		String currentClassName = "";
-	File file = null;
-	int maxFileSize = 5000 * 1004;
-	int maxMemSize = 5000 * 1004;
-	//if dont have E use access ok drive
-	String filePath = "D:/";
+		File file = null;
+		int maxFileSize = 5000 * 1004;
+		int maxMemSize = 5000 * 1004;
+		//if dont have E use access ok drive
+		String filePath = "D:/";
 
-	Path root = Paths.get(".").normalize().toAbsolutePath();
-	String path = root.toAbsolutePath().toString();
+		Path root = Paths.get(".").normalize().toAbsolutePath();
+		String path = root.toAbsolutePath().toString();
 
-	List<File> fileList = new ArrayList();
+		List<File> fileList = new ArrayList();
 
-	String contentType = request.getContentType();
-	if ((contentType.indexOf("multipart/form-data") >= 0)) {
+		String contentType = request.getContentType();
+		if ((contentType.indexOf("multipart/form-data") >= 0)) {
 
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-		factory.setSizeThreshold(maxMemSize);
-		//  factory.setRepository(new File("c:\\text"));
-		ServletFileUpload upload = new ServletFileUpload(factory);
-		upload.setSizeMax(maxFileSize);
-		try {
-			List fileItems = upload.parseRequest(request);
-			Iterator i = fileItems.iterator();
-			out.println("<h1>Uploaded Files</h1>");
-			//out.println("<hr>");
-			while (i.hasNext()) {
-		FileItem fi = (FileItem) i.next();
-		if (!fi.isFormField()) {
-			String fieldName = fi.getFieldName();
-			String fileName = fi.getName();
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			factory.setSizeThreshold(maxMemSize);
+			//  factory.setRepository(new File("c:\\text"));
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			upload.setSizeMax(maxFileSize);
+			try {
+		List fileItems = upload.parseRequest(request);
+		Iterator i = fileItems.iterator();
+		out.println("<h1>Uploaded Files</h1>");
+		//out.println("<hr>");
+		while (i.hasNext()) {
+			FileItem fi = (FileItem) i.next();
+			if (!fi.isFormField()) {
+		String fieldName = fi.getFieldName();
+		String fileName = fi.getName();
 
-			boolean isInMemory = fi.isInMemory();
-			long sizeInBytes = fi.getSize();
-			file = new File(filePath + fileName.substring(fileName.indexOf("\\") + 1));
-			fi.write(file);
-			System.out.println(fileName.substring(fileName.indexOf("\\") + 1) + "  file we dealing with");
-			if(fileName.endsWith(".java")){
-			out.println("<a href='#id"+fileName.split("/")[1].replaceAll(" ","")+"'><button>"+fileName.split("/")[1]+"</button></a>");
-			}
-			fileList.add(file);
-			//   out.println("Uploaded Filename: " + filePath + fileName + "<br>");
+		boolean isInMemory = fi.isInMemory();
+		long sizeInBytes = fi.getSize();
+		file = new File(filePath + fileName.substring(fileName.indexOf("\\") + 1));
+		fi.write(file);
+		System.out.println(fileName.substring(fileName.indexOf("\\") + 1) + "  file we dealing with");
+		if(fileName.endsWith(".java")){
+		out.println("<a href='#id"+fileName.split("/")[1].replaceAll(" ","")+"'><button>"+fileName.split("/")[1]+"</button></a>");
 		}
+		fileList.add(file);
+		//   out.println("Uploaded Filename: " + filePath + fileName + "<br>");
+			}
+		}
+
+		//filter files for .java
+
+		fileList = fileList.stream().filter(e -> e.getName().endsWith(".java")).collect(Collectors.toList());
+
+		//Get all methods and store them
+		//Get all VAr and store them
+		Map<String, String> allGlobalVar = new LinkedHashMap();
+		Map<String, MainMethod> allFileMethods = new HashMap();
+
+		for (File nowfile : fileList) {
+			List<String> allProgrammeList = new ArrayList();
+
+			try (BufferedReader br = new BufferedReader(new FileReader(nowfile))) {
+
+		String line;
+		int no = 1;
+
+		while ((line = br.readLine()) != null) {
+			// process the line.
+			//Add to list for no and codeline
+			if (!line.trim().equals("")) {
+
+				allProgrammeList.add(no + "#" + line);
+				no++;
+			}
+		}
+			} catch (Exception e) {
+		e.printStackTrace();
 			}
 
-			//filter files for .java
+			String regexString = "";
 
-			fileList = fileList.stream().filter(e -> e.getName().endsWith(".java")).collect(Collectors.toList());
+			for (int x = 0; x < allProgrammeList.size(); x++)
+		regexString += allProgrammeList.get(x) + "\n";
 
-			//Get all methods and store them
-			//Get all VAr and store them
-			Map<String, String> allGlobalVar = new LinkedHashMap();
-			Map<String, Method> allFileMethods = new HashMap();
+			String className = "";
 
-			for (File nowfile : fileList) {
-		List<String> allProgrammeList = new ArrayList();
+			Matcher classF = Pattern.compile("class (.*)( )*\\{").matcher(regexString);
+			while (classF.find()) {
+		className = classF.group(1);
+
+			}
+
+			currentClassName = className;
+			//replace if } with +if to resolve complexity
+			Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
+			Matcher mif = p.matcher(regexString);
+			while (mif.find()) {
+		// replace first number with "number" and second number with the first
+		String identifier = mif.group(5);
+		String ifIdentify = identifier.replace("}", "-if");
+		regexString = regexString.replace(identifier, ifIdentify);
+			}
+			//replace if end
+
+			//replace for } with +for to resolve complexity
+			Pattern p1 = Pattern.compile("for( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
+			Matcher mif1 = p1.matcher(regexString);
+			while (mif1.find()) {
+		// replace first number with "number" and second number with the first
+		String identifier = mif1.group(5);
+		String ifIdentify = identifier.replace("}", "-for");
+		regexString = regexString.replace(identifier, ifIdentify);
+			}
+			//replace for  end
+
+			Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
+			while (m.find()) {
+
+		//name with access and return 
+		String methodName = m.group(2);
+
+		String methodWithAccessAndReturn = (methodName.replaceAll("\\(.*\\)", ""));
+
+		String onlyMethodName = methodWithAccessAndReturn.substring(methodWithAccessAndReturn.lastIndexOf(" "));
+
+		MainMethod method = new MainMethod();
+		String methodBody = m.group().substring(m.group().indexOf("{"));
+		method.setMethodBody(methodBody);
+
+		//get no of the recursive call to own mwthod
+		Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
+		Matcher matcher = pattern.matcher(methodBody);
+		//set recursive call no and put to method object
+
+		if (matcher.find()) {
+
+			//check if method recursive
+			method.setRecursiveCall(true);
+			method.setRecursiveCallNo(matcher.group(1));
+		}
+
+		allFileMethods.put(onlyMethodName + "," + className, method);
+			}
+			//all methods are added
+
+			//check global vaiables
+
+			//remove methods from class
+			String[] removeMetho = { regexString };
+
+			allFileMethods.entrySet().forEach(e -> {
+		removeMetho[0] = removeMetho[0].replace(e.getValue().getMethodBody(), "");
+			});
+
+			Matcher globalVariables = Pattern.compile("(\\d)+#.+ (.+)=.+;").matcher(removeMetho[0]);
+			while (globalVariables.find()) {
+
+		allGlobalVar.put(globalVariables.group(1) + "," + className, globalVariables.group(2));
+			}
+
+		}
+
+		//individual class file checking	
+
+		for (File nowfile : fileList) {
+	%>
+	</br>
+	</br>
+	<hr>
+	<h1 id="<%="id"+nowfile.getName().replaceAll(" ","")%>"><%=nowfile.getName()%></h1>
+	<hr>
+	
+	<div hidden>
+	<%
+		List<String> list = new ArrayList();
+		//Set<String> listOfOtherMethodCallsThisFile = new HashSet();
+
+		Map<String, String> normalToNormal = new LinkedHashMap();
+		Map<String, String> normalToRecursive = new LinkedHashMap();
+		Map<String, String> RecursiveToNormal = new LinkedHashMap();
+		Map<String, String> RecursiveToRecursive = new LinkedHashMap();
+
+		Map<String, String> globalVar = new LinkedHashMap();
 
 		try (BufferedReader br = new BufferedReader(new FileReader(nowfile))) {
 
@@ -177,32 +300,40 @@ a:hover:not (.active ) {
 			int no = 1;
 
 			while ((line = br.readLine()) != null) {
-				// process the line.
-				//Add to list for no and codeline
-				if (!line.trim().equals("")) {
-
-					allProgrammeList.add(no + "#" + line);
-					no++;
-				}
+		// process the line.
+		//Add to list for no and codeline
+		if (!line.trim().equals("")) {
+			list.add(no + "#" + line);
+			out.println(line + "</br>");
+			no++;
+		}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		out.println("<hr>");
+		out.println("<hr>");
+		out.println("<br><br>");
+		out.println("<br><br>");
+
 		String regexString = "";
 
-		for (int x = 0; x < allProgrammeList.size(); x++)
-			regexString += allProgrammeList.get(x) + "\n";
+		for (int x = 0; x < list.size(); x++)
+			regexString += list.get(x) + "\n";
 
-		String className = "";
+		//finding the main class name of the file
 
-		Matcher classF = Pattern.compile("class (.*)( )*\\{").matcher(regexString);
-		while (classF.find()) {
-			className = classF.group(1);
+		//Finding  methods
+		//Map designed with method name and method body
+		Map<String, MainMethod> thisFileMethods = new HashMap();
+		Map<String, Integer> table1 = new HashMap();
+		Map<String, Integer> table2 = new HashMap();
+		Map<String, Integer> table3 = new HashMap();
+		Map<String, Integer> table4 = new HashMap();
+		Map<String, Integer> table5 = new HashMap();
+		Map<String, Integer> table6 = new HashMap();
 
-		}
-
-		currentClassName = className;
 		//replace if } with +if to resolve complexity
 		Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
 		Matcher mif = p.matcher(regexString);
@@ -235,7 +366,10 @@ a:hover:not (.active ) {
 
 			String onlyMethodName = methodWithAccessAndReturn.substring(methodWithAccessAndReturn.lastIndexOf(" "));
 
-			Method method = new Method();
+			//System.out.println(onlyMethodName);
+			System.out.println("\n__________________________________________");
+
+			MainMethod method = new MainMethod();
 			String methodBody = m.group().substring(m.group().indexOf("{"));
 			method.setMethodBody(methodBody);
 
@@ -243,156 +377,22 @@ a:hover:not (.active ) {
 			Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
 			Matcher matcher = pattern.matcher(methodBody);
 			//set recursive call no and put to method object
-
 			if (matcher.find()) {
 
-				//check if method recursive
-				method.setRecursiveCall(true);
-				method.setRecursiveCallNo(matcher.group(1));
+		//check if method recursive
+		method.setRecursiveCall(true);
+		// 			System.out.println(matcher.group() + " own method call found");
+		// 			System.out.println(matcher.group(1));
+		method.setRecursiveCallNo(matcher.group(1));
 			}
+			System.out.println(thisFileMethods + "\n_________________________________________");
 
-			allFileMethods.put(onlyMethodName + "," + className, method);
-		}
-		//all methods are added
-
-		//check global vaiables
-
-		//remove methods from class
-		String[] removeMetho = { regexString };
-
-		allFileMethods.entrySet().forEach(e -> {
-			removeMetho[0] = removeMetho[0].replace(e.getValue().getMethodBody(), "");
-		});
-
-		Matcher globalVariables = Pattern.compile("(\\d)+#.+ (.+)=.+;").matcher(removeMetho[0]);
-		while (globalVariables.find()) {
-
-			allGlobalVar.put(globalVariables.group(1) + "," + className, globalVariables.group(2));
+			thisFileMethods.put(onlyMethodName, method);
 		}
 
-			}
-
-			//individual class file checking	
-
-			for (File nowfile : fileList) {
-	%>
-	</br>
-	</br>
-	<hr>
-	<h1 id="<%="id"+nowfile.getName().replaceAll(" ","")%>"><%=nowfile.getName()%></h1>
-	<hr>
-	
-	<div hidden>
-	<%
-		List<String> list = new ArrayList();
-	//Set<String> listOfOtherMethodCallsThisFile = new HashSet();
-
-	Map<String, String> normalToNormal = new LinkedHashMap();
-	Map<String, String> normalToRecursive = new LinkedHashMap();
-	Map<String, String> RecursiveToNormal = new LinkedHashMap();
-	Map<String, String> RecursiveToRecursive = new LinkedHashMap();
-
-	Map<String, String> globalVar = new LinkedHashMap();
-
-	try (BufferedReader br = new BufferedReader(new FileReader(nowfile))) {
-
-		String line;
-		int no = 1;
-
-		while ((line = br.readLine()) != null) {
-			// process the line.
-			//Add to list for no and codeline
-			if (!line.trim().equals("")) {
-		list.add(no + "#" + line);
-		out.println(line + "</br>");
-		no++;
-			}
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-
-	out.println("<hr>");
-	out.println("<hr>");
-	out.println("<br><br>");
-	out.println("<br><br>");
-
-	String regexString = "";
-
-	for (int x = 0; x < list.size(); x++)
-		regexString += list.get(x) + "\n";
-
-	//finding the main class name of the file
-
-	//Finding  methods
-	//Map designed with method name and method body
-	Map<String, Method> thisFileMethods = new HashMap();
-	Map<String, Integer> table1 = new HashMap();
-	Map<String, Integer> table2 = new HashMap();
-	Map<String, Integer> table3 = new HashMap();
-	Map<String, Integer> table4 = new HashMap();
-	Map<String, Integer> table5 = new HashMap();
-	Map<String, Integer> table6 = new HashMap();
-
-	//replace if } with +if to resolve complexity
-	Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-	Matcher mif = p.matcher(regexString);
-	while (mif.find()) {
-		// replace first number with "number" and second number with the first
-		String identifier = mif.group(5);
-		String ifIdentify = identifier.replace("}", "-if");
-		regexString = regexString.replace(identifier, ifIdentify);
-	}
-	//replace if end
-
-	//replace for } with +for to resolve complexity
-	Pattern p1 = Pattern.compile("for( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-	Matcher mif1 = p1.matcher(regexString);
-	while (mif1.find()) {
-		// replace first number with "number" and second number with the first
-		String identifier = mif1.group(5);
-		String ifIdentify = identifier.replace("}", "-for");
-		regexString = regexString.replace(identifier, ifIdentify);
-	}
-	//replace for  end
-
-	Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
-	while (m.find()) {
-
-		//name with access and return 
-		String methodName = m.group(2);
-
-		String methodWithAccessAndReturn = (methodName.replaceAll("\\(.*\\)", ""));
-
-		String onlyMethodName = methodWithAccessAndReturn.substring(methodWithAccessAndReturn.lastIndexOf(" "));
-
-		//System.out.println(onlyMethodName);
-		System.out.println("\n__________________________________________");
-
-		Method method = new Method();
-		String methodBody = m.group().substring(m.group().indexOf("{"));
-		method.setMethodBody(methodBody);
-
-		//get no of the recursive call to own mwthod
-		Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
-		Matcher matcher = pattern.matcher(methodBody);
-		//set recursive call no and put to method object
-		if (matcher.find()) {
-
-			//check if method recursive
-			method.setRecursiveCall(true);
-			// 			System.out.println(matcher.group() + " own method call found");
-			// 			System.out.println(matcher.group(1));
-			method.setRecursiveCallNo(matcher.group(1));
-		}
-		System.out.println(thisFileMethods + "\n_________________________________________");
-
-		thisFileMethods.put(onlyMethodName, method);
-	}
-
-	//size taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
-	// 	for (int x = 0; x < list.size(); x++)
-	// 		regexString += list.get(x) + "\n";
+		//size taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
+		// 	for (int x = 0; x < list.size(); x++)
+		// 		regexString += list.get(x) + "\n";
 	%>
 	</div>
 	

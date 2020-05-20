@@ -1,9 +1,9 @@
-package model;
+package com.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Method {
+public class MainMethod {
 
 	//moethod full body
 	String methodBody;

@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.model.Files;
 import com.model.Size;
-import com.service.ControlStructureService;
 import com.service.FilesService;
 import com.service.MethodComplexity;
 import com.service.SizeComplexity;
@@ -254,40 +253,9 @@ public class AccessFileServlet extends HttpServlet {
 				request.getRequestDispatcher("method.jsp").forward(request, response);
 			}
 
-			if (type == 4) {
-				ArrayList<StatementLine> StatementListCtc = ControlStructureService
-						.calculateComplexityByType(allFunctions, codeArray);
 
-				out.println(
-						"Ctc Value for lines -------------------------------------------------------------------------------");
 
-				for (start = 0; start < StatementListCtc.size(); start++) {
-					StatementListCtc.get(start);
-					out.println("Line Number " + StatementListCtc.get(start).getLineNumber() + ": Ctc :  "
-							+ StatementListCtc.get(start).getComplexity());
-				}
 
-				ArrayList<StatementLine> StatementListCnc = ControlStructureService
-						.calculateComplexityByNestingControlStructure(allFunctions, codeArray);
-
-				out.println(
-						"Cnc Value for lines -------------------------------------------------------------------------------");
-
-				for (start = 0; start < StatementListCnc.size(); start++) {
-					StatementListCnc.get(start);
-					out.println("Line Number " + StatementListCnc.get(start).getLineNumber() + ": Cnc :  "
-							+ StatementListCnc.get(start).getComplexity());
-				}
-
-				httpSession.setAttribute("Ctc", StatementListCtc);
-				httpSession.setAttribute("Cnc", StatementListCnc);
-				request.getRequestDispatcher("controlStructure.jsp").forward(request, response);
-			}
-
-			if (type == 5) {
-				// Inheritance
-				
-			}
 
 			if (type == 6) {
 				// Coupling
