@@ -18,14 +18,17 @@ body {
     opacity: 0.3;
 }
 
+footer{
+	height: 50px;
+}
+
 .footer-image {
     background-color: black;
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: 50%;
     height: auto;
-    width: 100%;
     opacity: 0.3;
 }
 
@@ -77,9 +80,7 @@ body {
     text-align: center;
     background-color: #423F3F;
 }
-input#browse-button[type="file"]{
-	display:none;
-}
+
 
 
 label#labelFile {
@@ -168,6 +169,7 @@ label#labelFile:hover{
     font-size: 3vh;
 }
 
+/*
 .social-media-icons {
     height: 35px;
     margin: 5px;
@@ -175,31 +177,11 @@ label#labelFile:hover{
     right: 100px;
     bottom: -175%;
 }
-
+*/
 #facebook {
     margin: 5px;
 }
 
-
-
-
-
-
-textarea{
-	width:400px;
-		
-	/* The following three rules make a difference in the script */
-	overflow:hidden;
-	line-height: 13px;
-	font-size: 13px;
-			
-	border:1px solid #999;
-	padding:10px;
-	font-family: monospace;
-	margin:0;
-	display:block;
-	outline:none;
-}
 
 /* textarea:focus{
   border-color:#333;
@@ -208,19 +190,4 @@ textarea{
 .container{
 	position:relative;
 	display:inline-block;
-}
-
-.line-nums{
-	font-size:13px;
-	line-height:13px;
-	padding:10px 4px;
-	font-family: monospace;
-  background: #EEE;
-	position: absolute;
-	width: 20px;
-	left: -28px;
-	bottom: 0;
-	top: 0;
-	text-align:right;
-	border:1px solid #999;
 }
