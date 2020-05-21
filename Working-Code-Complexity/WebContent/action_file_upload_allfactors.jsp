@@ -78,7 +78,7 @@ li a:hover:not (.active ) {
 <ul>
 		<li><a href="index.jsp">Home</a></li>
 		</ul>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
 	<%
 		String currentClassName = "";
 	File file = null;
@@ -361,7 +361,10 @@ li a:hover:not (.active ) {
 	%>
 	
 	</div>
-	<h1 id="size_com">Size complexity</h1>
+	<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of Size</font>
+		</h1></center>
+		<br>
 	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -612,7 +615,9 @@ li a:hover:not (.active ) {
 
 	//variable complexity taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
 	%>
-	<h1>Variable complexity</h1>
+	<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of Variable</font>
+		</h1></center>
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -629,7 +634,7 @@ li a:hover:not (.active ) {
 
 		<!-- 		Wvs Npdtv Ncdtv Cv  -->
 
-
+<br>
 
 		<tbody>
 			<tr>
@@ -730,11 +735,13 @@ li a:hover:not (.active ) {
 	<br>
 	<br>
 
-	<h1>complexity of a program due to methods</h1>
-	<hr>
+    <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of Methods</font>
+		</h1></center>
+	
 	<br>
 
-	<table style="width: 100%">
+	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
 			<col style="width: 48%;">
@@ -777,7 +784,7 @@ li a:hover:not (.active ) {
 			</tr>
 
 
-			<hr>
+		
 
 			<%
 				for (int i1 = 0; i1 < list.size(); i1++) {
@@ -866,9 +873,11 @@ li a:hover:not (.active ) {
 
 			<col style="width: 1%;">
 		</colgroup>
-
-		<h1>Coupeling complexity</h1>
-
+<br>
+		
+<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of Coupeling</font>
+		</h1></center>
 		<!-- Put <thead>, <tbody>, and <tr>'s here! -->
 		<tbody>
 			<tr>
@@ -895,7 +904,7 @@ li a:hover:not (.active ) {
 				<th>Ccp</th>
 
 			</tr>
-
+<br>
 			<%
 				for (int i1 = 0; i1 < list.size(); i1++) {
 
@@ -1096,9 +1105,10 @@ li a:hover:not (.active ) {
 
 		</tbody>
 	</table>
-
-
-	<h1>complexity of a program due to control structures</h1>
+<br>
+<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of control structures</font>
+		</h1></center>
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -1116,7 +1126,7 @@ li a:hover:not (.active ) {
 		<!-- 		Wtcs NC Ccspps Ccs   -->
 
 
-
+<br>
 		<tbody>
 			<tr>
 				<th>no</th>
@@ -1222,9 +1232,9 @@ li a:hover:not (.active ) {
 		</tbody>
 	</table>
 	<br>
-	<br>
-
-	<h1>complexity of a program due to Inheritance</h1>
+   <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of Inheritance</font>
+		</h1></center>
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -1246,7 +1256,7 @@ li a:hover:not (.active ) {
 		<!-- 	Cs Cv Cm Ci Ccp Ccs TCps    -->
 
 
-
+<br>
 		<tbody>
 			<tr>
 				<th>no</th>
@@ -1374,8 +1384,9 @@ li a:hover:not (.active ) {
 
 
 
-
-	<h1>complexity of a program due to all the factors</h1>
+  <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
+			<font color="#00376c">Complexity of All the factors</font>
+		</h1></center>
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -1396,7 +1407,7 @@ li a:hover:not (.active ) {
 
 		<!-- 	Cs Cv Cm Ci Ccp Ccs TCps    -->
 
-
+<br>
 
 		<tbody>
 			<tr>
