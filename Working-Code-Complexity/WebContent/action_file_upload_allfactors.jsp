@@ -1235,124 +1235,122 @@ li a:hover:not (.active ) {
    <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Inheritance</font>
 		</h1></center>
-	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
+	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
-			<col style="width: 1%;">
+			<col style="width: 6%;">
 			<col style="width: 48%;">
-
 			<col style="width: 6%;">
 			<col style="width: 6%;">
 			<col style="width: 6%;">
 			<col style="width: 6%;">
-
 			<col style="width: 6%;">
 			<col style="width: 6%;">
 			<col style="width: 10%;">
-
 		</colgroup>
 
-
-
-		<!-- 	Cs Cv Cm Ci Ccp Ccs TCps    -->
-
-
-<br>
+		
+		<br>
 		<tbody>
 			<tr>
-				<th>no</th>
+				<th>Line No</th>
 				<th>Program statements</th>
-
-
-
-				<th>Ci</th>
-
-
-
+				<th>Ndi</th>                <!--  (No of direct inheritances) -->
+				<th>Nidi</th>               <!-- (No of indirect inheritances) -->
+				<th>Ti</th>                 <!-- Total inheritances -->
+				<th>Ci</th>                 <!-- Ci -->
 			</tr>
 			<%!public String getMapping(String className, Map<String, String> classesAndData) {
 
 		Matcher extendedClass = Pattern.compile(".*extends( )+(.+)").matcher(className);
 		String fullClassMap = className;
 		if (extendedClass.find()) {
-
-			//	System.out.println(classesAndData.get(extendedClass.group(2).trim()).equals("")+"          dsssssssssssssssssss");
+			//	System.out.println(classesAndData.get(extendedClass.group(2).trim()).equals("")+"");
 
 			if (classesAndData.get(extendedClass.group(2).trim()).equals("")) {
 				fullClassMap = fullClassMap + "null";
 			} else {
 				fullClassMap += classesAndData.get(extendedClass.group(2).trim());
-
 			}
-
 		}
-
 		return fullClassMap;
 	}%>
 
 			<%
 				Map<String, String> classesAndData = new LinkedHashMap();
 
-			Matcher classes = Pattern.compile("class( )+(.+)\\{").matcher(regexString);
+							Matcher classes = Pattern.compile("class( )+(.+)\\{").matcher(regexString);
 
-			while (classes.find()) {
-				String className = classes.group(2);
-				if (className.contains("extends")) {
-					classesAndData.put(className.substring(0, className.indexOf("extends")).trim(), className);
-				} else {
+							while (classes.find()) {
+								String className = classes.group(2);
+								if (className.contains("extends")) {
+									classesAndData.put(className.substring(0, className.indexOf("extends")).trim(),
+											className);
+								} else {
 
-					classesAndData.put(className, "");
-				}
-			}
+									classesAndData.put(className, "");
+								}
+							}
 
-			for (int i1 = 0; i1 < list.size(); i1++) {
+							for (int i1 = 0; i1 < list.size(); i1++) {
 
-				String originalCodeLine = list.get(i1).toString();
-				String codeLine[] = { list.get(i1).toString() };
-				String number = codeLine[0].substring(0, codeLine[0].indexOf("#"));
+								String originalCodeLine = list.get(i1).toString();
+								String codeLine[] = { list.get(i1).toString() };
+								String number = codeLine[0].substring(0, codeLine[0].indexOf("#"));
 
-				int classScore = 0;
+								int ci = 0;
+								int classScore = 0;
+								int direct = 0;
+								int inDirect = 0;
+								String classNameCol = "";
 
-				Matcher matchAgain = Pattern.compile("class( )+(.+)\\{").matcher(originalCodeLine);
+								Matcher matchAgain = Pattern.compile("class( )+(.+)\\{").matcher(originalCodeLine);
 
-				while (matchAgain.find()) {
-					String className = matchAgain.group(2);
+								while (matchAgain.find()) {
+									String className = matchAgain.group(2);
 
-					if (originalCodeLine.contains("extends")) {
-				String lastExtend = className.substring(className.indexOf("extends"));
+									if (originalCodeLine.contains("extends")) {
 
-				String fullClassMap = className;
+										direct = 1;
 
-				Matcher extendedClass = Pattern.compile("extends( )+(.+)").matcher(className);
-				if (extendedClass.find()) {
-					// 					fullClassMap += classesAndData.get(extendedClass.group(2).trim());
-					// 					System.out.println(fullClassMap + "  data addddddddddddddddddddddddddddddddddddddddddded "
-					// 							+ classesAndData.get(extendedClass.group(2).trim()));
+										String lastExtend = className.substring(className.indexOf("extends"));
+										String fullClassMap = className;
+										System.out.println(
+												className.split("extends")[0] + "Extendssssss");
+										//split the line from extends keyword
+										classNameCol = className.split("extends")[0];
+										Matcher extendedClass = Pattern.compile("extends( )+(.+)").matcher(className);
+										if (extendedClass.find()) {
 
-					while (!fullClassMap.contains("null")) {
+											while (!fullClassMap.contains("null")) {
 
-						fullClassMap = getMapping(fullClassMap, classesAndData);
+												fullClassMap = getMapping(fullClassMap, classesAndData);
 
-					}
+											}
 
-					Matcher countOfExtend = Pattern.compile("extends").matcher(fullClassMap);
-					while (countOfExtend.find()) {
-						System.out.println(fullClassMap.replaceAll("null", "") + "  data Map Generated count "
-								+ countOfExtend.group());
-						classScore++;
-					}
+											Matcher countOfExtend = Pattern.compile("extends").matcher(fullClassMap);
+											while (countOfExtend.find()) {
+												System.out.println(fullClassMap.replaceAll("null", "")
+														+ "  data Map Generated count " + countOfExtend.group());
+												classScore++;
+											}
 
-				}
+										}
 
-					} else {
-				System.out.println(className + "  data addddddddddddddddddddddddddddddddddddddddddded " + originalCodeLine);
+									} else {
+										System.out.println(className + "Found");
+										classNameCol = className;
+										classScore = 0;
+									}
+								}
 
-				classScore = 0;
-					}
-				}
+								if (classScore > 4) {
+									classScore = 4;
+									ci = 4;
+								}
 
-				if (classScore > 4) {
-					classScore = 4;
-				}
+								for (int x = 0; x <= classScore; x++) {
+									ci += x;
+								}
 			%>
 
 
@@ -1361,14 +1359,14 @@ li a:hover:not (.active ) {
 				<td><%=originalCodeLine.substring(0, originalCodeLine.indexOf("#"))%></td>
 				<td><%=originalCodeLine.substring(originalCodeLine.indexOf("#") + 1)%></td>
 				<%
-					table4.put(number, classScore);
+					table4.put(number, ci);
 				%>
 
+
+				<td><%=direct%></td>
+				<td><%=classScore - direct%></td>
 				<td><%=classScore%></td>
-
-
-
-
+				<td><%=classScore%></td>
 
 
 			</tr>
