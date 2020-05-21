@@ -80,7 +80,7 @@ a:hover:not (.active ) {
 <ul>
 		<li><a href="index.jsp">Home</a></li>
 		</ul>
-
+<br>
 	<div >
 		<%
 			String currentClassName = "";
@@ -107,7 +107,6 @@ a:hover:not (.active ) {
 			List fileItems = upload.parseRequest(request);
 			Iterator i = fileItems.iterator();
 			out.println("<h1>Uploaded Files</h1>");
-			//out.println("<hr>");
 			while (i.hasNext()) {
 				FileItem fi = (FileItem) i.next();
 				if (!fi.isFormField()) {
@@ -118,9 +117,6 @@ a:hover:not (.active ) {
 			long sizeInBytes = fi.getSize();
 			file = new File(filePath + fileName.substring(fileName.indexOf("\\") + 1));
 			fi.write(file);
-			if(fileName.endsWith(".java")){
-			out.println("<a href='#id"+fileName.split("/")[1].replaceAll(" ","")+"'><button>"+fileName.split("/")[1]+"</button></a>");
-			}
 			fileList.add(file);
 				}
 			}
@@ -166,30 +162,6 @@ a:hover:not (.active ) {
 			className = classF.group(1);
 
 				}
-
-				currentClassName = className;
-				//replace if } with +if to resolve complexity
-				Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-				Matcher mif = p.matcher(regexString);
-				while (mif.find()) {
-			// replace first number with "number" and second number with the first
-			String identifier = mif.group(5);
-			String ifIdentify = identifier.replace("}", "-if");
-			regexString = regexString.replace(identifier, ifIdentify);
-				}
-				// if end
-
-				//replace for } with +for to resolve complexity
-				Pattern p1 = Pattern.compile("for( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-				Matcher mif1 = p1.matcher(regexString);
-				while (mif1.find()) {
-			// replace first number with "number" and second number with the first
-			String identifier = mif1.group(5);
-			String ifIdentify = identifier.replace("}", "-for");
-			regexString = regexString.replace(identifier, ifIdentify);
-				}
-				//for  end
-
 				Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
 				while (m.find()) {
 
@@ -235,21 +207,14 @@ a:hover:not (.active ) {
 			for (File nowfile : fileList) {
 		%>
 	</div>
-	</br>
-	</br>
+	
 	<hr>
 	<h1 id="<%="id"+nowfile.getName().replaceAll(" ","")%>"><%=nowfile.getName()%></h1>
 	<hr>
 	<div hidden>
 	<%
 		List<String> list = new ArrayList();
-		//Set<String> listOfOtherMethodCallsThisFile = new HashSet();
-		Map<String, String> normalToNormal = new LinkedHashMap();
-		Map<String, String> normalToRecursive = new LinkedHashMap();
-		Map<String, String> RecursiveToNormal = new LinkedHashMap();
-		Map<String, String> RecursiveToRecursive = new LinkedHashMap();
-		Map<String, String> globalVar = new LinkedHashMap();
-
+	
 		try (BufferedReader br = new BufferedReader(new FileReader(nowfile))) {
 			String line;
 			int no = 1;
@@ -281,64 +246,10 @@ a:hover:not (.active ) {
 
 		//Map designed with method name and body
 		Map<String, MainMethod> thisFileMethods = new HashMap();
-		Map<String, Integer> table1 = new HashMap();
-		Map<String, Integer> table2 = new HashMap();
-		Map<String, Integer> table3 = new HashMap();
-		Map<String, Integer> table4 = new HashMap();
-		Map<String, Integer> table5 = new HashMap();
-		Map<String, Integer> table6 = new HashMap();
-
-		//replace if } with +if to resolve complexity
-		Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-		Matcher mif = p.matcher(regexString);
-		while (mif.find()) {
-			String identifier = mif.group(5);
-			String ifIdentify = identifier.replace("}", "-if");
-			regexString = regexString.replace(identifier, ifIdentify);
-		}
-		//replace if end
-
-		//replace for } with +for to resolve complexity
-		Pattern p1 = Pattern.compile("for( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
-		Matcher mif1 = p1.matcher(regexString);
-		while (mif1.find()) {
-			// replace first number with "number" and second number with the first
-			String identifier = mif1.group(5);
-			String ifIdentify = identifier.replace("}", "-for");
-			regexString = regexString.replace(identifier, ifIdentify);
-		}
-		//replace for  end
-
-		Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
-		while (m.find()) {
-
-			//Name with access and return 
-			String methodName = m.group(2);
-
-			String methodWithAccessAndReturn = (methodName.replaceAll("\\(.*\\)", ""));
-
-			String onlyMethodName = methodWithAccessAndReturn.substring(methodWithAccessAndReturn.lastIndexOf(" "));
-
-			MainMethod method = new MainMethod();
-			String methodBody = m.group().substring(m.group().indexOf("{"));
-			method.setMethodBody(methodBody);
-
-			//Get number of the recursive call to own method
-			Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
-			Matcher matcher = pattern.matcher(methodBody);
-			//set recursive call no and put to method object
-			if (matcher.find()) {
-
-		//check if method recursive
-		method.setRecursiveCall(true);
-		// 			System.out.println("own method call found");
-		method.setRecursiveCallNo(matcher.group(1));
-			}
-			System.out.println(thisFileMethods + "\n_________________________________________");
-
-			thisFileMethods.put(onlyMethodName, method);
-		}
+		Map<String, Integer> table = new HashMap();
+	
 	%>
+	
 </div>
 	<!-- Inheritance Complexity -->
 	<!-- Weight Changing -->
@@ -499,7 +410,7 @@ a:hover:not (.active ) {
 				<td><%=originalCodeLine.substring(0, originalCodeLine.indexOf("#"))%></td>
 				<td><%=originalCodeLine.substring(originalCodeLine.indexOf("#") + 1)%></td>
 				<%
-					table4.put(number, ci);
+					table.put(number, ci);
 				%>
 
 
