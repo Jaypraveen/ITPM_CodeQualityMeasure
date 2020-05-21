@@ -289,7 +289,7 @@ a:hover:not (.active ) {
 	
 	<br>
 	<!-- Inheritance Complexit table -->
-	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table">
+	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 6%;">
 			<col style="width: 48%;">
