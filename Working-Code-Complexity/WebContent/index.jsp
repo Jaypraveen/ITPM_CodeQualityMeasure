@@ -60,7 +60,7 @@
     Choose file
     </label>-->
 
-		<!-- 
+		<!-- Test
     
      -->
          <h1 style="color:#FFFAFA; font-size:64px; text-align: center; margin-top: -41px;">Size,Variable,Method</h1>
