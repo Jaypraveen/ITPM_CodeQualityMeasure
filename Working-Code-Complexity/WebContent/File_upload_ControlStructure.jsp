@@ -87,6 +87,7 @@ a:hover:not (.active ) {
 		<li><a href="index.jsp">Home</a></li>
 	</ul>
 <br>
+	<div>
 	<%
 		String currentClassName = "";
 		File file = null;
@@ -110,7 +111,6 @@ a:hover:not (.active ) {
 			try {
 				List fileItems = upload.parseRequest(request);
 				Iterator i = fileItems.iterator();
-				out.println("<h1>Uploaded Files</h1>");
 					while (i.hasNext()) {
 					FileItem fi = (FileItem) i.next();
 					if (!fi.isFormField()) {
@@ -195,10 +195,7 @@ a:hover:not (.active ) {
 				
 				for (File nowfile : fileList) {
 	%>
-	
-	<hr>
-	<h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>"><%=nowfile.getName()%></h1>
-	<hr>
+	</div>
 
 	<div hidden>
 		<%
@@ -262,7 +259,14 @@ a:hover:not (.active ) {
 	</div>
 
 
+	<div align="center">
 
+		<h1 class="display-1"
+			style="padding-left: -79px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
+			<font color="#00376c">Complexity of Control Structure</font>
+		</h1>
+
+	</div>
 
 	<form action="AccessFilesServlet" method="post" class="form-group"
 		style="width: 50%; margin-left: 380px;">
@@ -318,18 +322,15 @@ a:hover:not (.active ) {
 		</div>
 	</form>
 
+
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+
 	<br>
 	<br>
 
-	<div align="center">
 
-		<h1 class="display-1"
-			style="padding-left: -79px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
-			<font color="#00376c">Complexity of Control Structure</font>
-		</h1>
-		<br>
-
-	</div>
 
 
 	<br>
