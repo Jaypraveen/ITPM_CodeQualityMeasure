@@ -122,7 +122,6 @@ a:hover:not (.active ) {
 			}
 
 			//filter files for .java
-
 			fileList = fileList.stream().filter(e -> e.getName().endsWith(".java")).collect(Collectors.toList());
 
 			//Get all methods and store them

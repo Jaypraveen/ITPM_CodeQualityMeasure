@@ -19,10 +19,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Code Complexity Tool</title>
-
-
-
-
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -51,16 +47,13 @@
 table, td, th {
 	border: 1px solid black;
 }
-
 table {
 	border-collapse: collapse;
 	width: 100%;
 }
-
 th {
 	height: 50px;
 }
-
 
 ul {
 	list-style-type: none;
@@ -70,11 +63,9 @@ ul {
 	background-color: #2c2e2d;
 	font-size: 25px;
 }
-
 li {
 	float: left;
 }
-
 li a {
 	display: block;
 	color: white;
@@ -83,10 +74,9 @@ li a {
 	text-decoration: none;
 }
 li
-a:hover:not(.active){
-background-color:#f2f5f4;
+a:hover:not (.active ) {
+	background-color: #f2f5f4;
 }
-
 </style>
 
 </head>
@@ -96,7 +86,7 @@ background-color:#f2f5f4;
 	<ul>
 		<li><a href="index.jsp">Home</a></li>
 	</ul>
-
+<br>
 	<%
 		String currentClassName = "";
 		File file = null;
@@ -205,8 +195,7 @@ background-color:#f2f5f4;
 				
 				for (File nowfile : fileList) {
 	%>
-	</br>
-	</br>
+	
 	<hr>
 	<h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>"><%=nowfile.getName()%></h1>
 	<hr>
