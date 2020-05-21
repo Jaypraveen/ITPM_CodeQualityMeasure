@@ -42,20 +42,28 @@
 	crossorigin="anonymous"></script>
 <title>Code Quality Measure</title>
 <style>
+table, td, th {
+	border: 1px solid black;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th {
+	height: 50px;
+}
+
 ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #00376c;
-	font-family: century gothic;
+	background-color: #2c2e2d;
 	font-size: 25px;
 }
-
 li {
 	float: left;
 }
-
 li a {
 	display: block;
 	color: white;
@@ -63,19 +71,15 @@ li a {
 	padding: 14px 16px;
 	text-decoration: none;
 }
-
-li a:hover:not (.active ) {
-	background-color: #ffd700;
-}
-
-.active {
-	background-color: #ffd700;
+li
+a:hover:not (.active ) {
+	background-color: #f2f5f4;
 }
 </style>
 </head>
 <body>
 
-<ul>
+		<ul>
 		<li><a href="index.jsp">Home</a></li>
 		</ul>
 
@@ -103,8 +107,6 @@ li a:hover:not (.active ) {
 		try {
 			List fileItems = upload.parseRequest(request);
 			Iterator i = fileItems.iterator();
-			//out.println("<h1>All Files Complexity </h1>");
-			//out.println("<hr>");
 			while (i.hasNext()) {
 		FileItem fi = (FileItem) i.next();
 		if (!fi.isFormField()) {
@@ -115,16 +117,11 @@ li a:hover:not (.active ) {
 			long sizeInBytes = fi.getSize();
 			file = new File(filePath + fileName.substring(fileName.indexOf("\\") + 1));
 			fi.write(file);
-			System.out.println(fileName.substring(fileName.indexOf("\\") + 1) + "  file we dealing with");
-			if(fileName.endsWith(".java")){
-			//out.println("<a href='#id"+fileName.split("/")[1].replaceAll(" ","")+"'><button>"+fileName.split("/")[1]+"</button></a>");
-			}
 			fileList.add(file);
-			//   out.println("Uploaded Filename: " + filePath + fileName + "<br>");
 		}
 			}
 
-			//filter files for .java
+
 
 			fileList = fileList.stream().filter(e -> e.getName().endsWith(".java")).collect(Collectors.toList());
 
@@ -243,9 +240,7 @@ li a:hover:not (.active ) {
 	%>
 	</br>
 	</br>
-	<hr>
-	<h1 id="<%="id"+nowfile.getName().replaceAll(" ","")%>"><%=nowfile.getName()%></h1>
-	<hr>
+
 	<div hidden>
 	<%
 		List<String> list = new ArrayList();
@@ -364,7 +359,12 @@ li a:hover:not (.active ) {
 	<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Size</font>
 		</h1></center>
-		<br>
+
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
 	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -618,6 +618,12 @@ li a:hover:not (.active ) {
 	<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Variable</font>
 		</h1></center>
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
+		
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -737,6 +743,11 @@ li a:hover:not (.active ) {
     <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Methods</font>
 		</h1></center>
+	
+	<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+	
 	
 	<br>
 
@@ -877,6 +888,11 @@ li a:hover:not (.active ) {
 <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Coupeling</font>
 		</h1></center>
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
 		<!-- Put <thead>, <tbody>, and <tr>'s here! -->
 		<tbody>
 			<tr>
@@ -1108,6 +1124,12 @@ li a:hover:not (.active ) {
 <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of control structures</font>
 		</h1></center>
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
+		
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
@@ -1234,6 +1256,11 @@ li a:hover:not (.active ) {
    <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Inheritance</font>
 		</h1></center>
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
 	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 6%;">
@@ -1380,6 +1407,11 @@ li a:hover:not (.active ) {
   <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of All the factors</font>
 		</h1></center>
+		
+		<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
+		<hr>
+		
 	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 1%;">
