@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -87,12 +86,12 @@ li a:hover:not (.active ) {
    </div><br>
 	<div style="margin-left: 369px; color: white;">
 		<h1>Select Folder:</h1>
+		
 		</hr>
 		<form action="action_file_upload_inheritnce.jsp" method="post"
 			enctype="multipart/form-data">
 			<input id="input-file" type="file" name="file" webkitdirectory directory
-				multiple="multiple" size="50" /> <br /> <br />
-				
+				multiple="multiple" size="50" margin-top="2px"/> <br /> <br />
 				<div class="form-group">
 				 <a	href="unzipFiles.jsp"><button class="btn btn-secondary"
 						type="button" title="Use this if you have a zipped file">
