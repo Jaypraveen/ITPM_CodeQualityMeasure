@@ -76,7 +76,7 @@ li a:hover:not (.active ) {
 	</section>
 	
 	<h1 style="color:#FFFAFA; font-size:64px; text-align: center; ">Inheritance</h1>
-	
+	<!-- Page Navigation Buttons  -->
 	<div style="margin-left: 436px; margin-top: 26px;">
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
@@ -86,12 +86,14 @@ li a:hover:not (.active ) {
    </div><br>
 	<div style="margin-left: 369px; color: white;">
 		<h1>Select Folder:</h1>
-		
 		</hr>
+		<!--File or Folder Uploader  -->
 		<form action="File_upload_Inheritance.jsp" method="post"
 			enctype="multipart/form-data">
 			<input id="input-file" type="file" name="file" webkitdirectory directory
 				multiple="multiple" size="50" margin-top="2px"/> <br /> <br />
+				
+				<!--Zipped file Unzipper  -->
 				<div class="form-group">
 				 <a	href="unzipFiles.jsp"><button class="btn btn-secondary"
 						type="button" title="Use this if you have a zipped file">
@@ -99,6 +101,7 @@ li a:hover:not (.active ) {
 						<span class="help-block">If your file is zipped, Click here</span>
 			</div>
 			<div style="margin-left: 69px;">
+			<!-- Programming Language Selecter -->
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -70px; font-weight: normal; width: 81%;">
 					<label for="complexity">Programming Language :</label> <select
@@ -109,7 +112,7 @@ li a:hover:not (.active ) {
 
 					</select>
 				</div>
-
+                <!--Uploaded code Editor  -->
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -69px; width: 81%; font-weight: normal;">
 					<label for="code">Enter Code:</label>

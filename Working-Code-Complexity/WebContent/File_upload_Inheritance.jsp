@@ -51,24 +51,7 @@ table {
 th {
 	height: 50px;
 }
-#myBtn {
-	display: none; /* Hidden by default */
-	position: fixed; /* Fixed/sticky position */
-	bottom: 20px; /* Place the button at the bottom of the page */
-	right: 30px; /* Place the button 30px from the right */
-	z-index: 99; /* Make sure it does not overlap */
-	border: none; /* Remove borders */
-	outline: none; /* Remove outline */
-	background-color: red; /* Set a background color */
-	color: white; /* Text color */
-	cursor: pointer; /* Add a mouse pointer on hover */
-	padding: 15px; /* Some padding */
-	border-radius: 10px; /* Rounded corners */
-	font-size: 18px; /* Increase font size */
-}
-#myBtn:hover {
-	background-color: #555; /* Add a dark-grey background on hover */
-}
+
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -104,7 +87,7 @@ a:hover:not (.active ) {
 			File file = null;
 			int maxFileSize = 5000 * 1004;
 			int maxMemSize = 5000 * 1004;
-			//if dont have E use access ok drive
+			//D Drive is used as the file path 
 			String filePath = "D:/";
 			
 			Path root = Paths.get(".").normalize().toAbsolutePath();
@@ -135,12 +118,10 @@ a:hover:not (.active ) {
 			long sizeInBytes = fi.getSize();
 			file = new File(filePath + fileName.substring(fileName.indexOf("\\") + 1));
 			fi.write(file);
-			System.out.println(fileName.substring(fileName.indexOf("\\") + 1) + "  file we dealing with");
 			if(fileName.endsWith(".java")){
 			out.println("<a href='#id"+fileName.split("/")[1].replaceAll(" ","")+"'><button>"+fileName.split("/")[1]+"</button></a>");
 			}
 			fileList.add(file);
-			//   out.println("Uploaded Filename: " + filePath + fileName + "<br>");
 				}
 			}
 
@@ -162,8 +143,7 @@ a:hover:not (.active ) {
 			int no = 1;
 
 			while ((line = br.readLine()) != null) {
-				// process the line.
-				//Add to list for no and codeline
+				//Adding number and the coloum numbers
 				if (!line.trim().equals("")) {
 
 					allProgrammeList.add(no + "#" + line);
@@ -197,7 +177,7 @@ a:hover:not (.active ) {
 			String ifIdentify = identifier.replace("}", "-if");
 			regexString = regexString.replace(identifier, ifIdentify);
 				}
-				//replace if end
+				// if end
 
 				//replace for } with +for to resolve complexity
 				Pattern p1 = Pattern.compile("for( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
@@ -208,12 +188,12 @@ a:hover:not (.active ) {
 			String ifIdentify = identifier.replace("}", "-for");
 			regexString = regexString.replace(identifier, ifIdentify);
 				}
-				//replace for  end
+				//for  end
 
 				Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
 				while (m.find()) {
 
-			//name with access and return 
+			//Name with the access 
 			String methodName = m.group(2);
 
 			String methodWithAccessAndReturn = (methodName.replaceAll("\\(.*\\)", ""));
@@ -224,25 +204,21 @@ a:hover:not (.active ) {
 			String methodBody = m.group().substring(m.group().indexOf("{"));
 			method.setMethodBody(methodBody);
 
-			//get no of the recursive call to own mwthod
 			Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
 			Matcher matcher = pattern.matcher(methodBody);
-			//set recursive call no and put to method object
+			
 
 			if (matcher.find()) {
-
-				//check if method recursive
+				//check if method 
 				method.setRecursiveCall(true);
 				method.setRecursiveCallNo(matcher.group(1));
 			}
 
 			allFileMethods.put(onlyMethodName + "," + className, method);
 				}
-				//all methods are added
+				//All methods added 
 
-				//check global vaiables
-
-				//remove methods from class
+				//Sperate methods from class
 				String[] removeMetho = { regexString };
 
 				allFileMethods.entrySet().forEach(e -> {
@@ -254,11 +230,8 @@ a:hover:not (.active ) {
 
 			allGlobalVar.put(globalVariables.group(1) + "," + className, globalVariables.group(2));
 				}
-
 			}
-
-			//individual class file checking	
-
+            //Checking individual file
 			for (File nowfile : fileList) {
 		%>
 	</div>
@@ -283,7 +256,7 @@ a:hover:not (.active ) {
 
 			while ((line = br.readLine()) != null) {
 		// process the line.
-		//Add to list for no and codeline
+		//Add Numbers and Code-line to the list 
 		if (!line.trim().equals("")) {
 			list.add(no + "#" + line);
 			out.println(line + "</br>");
@@ -304,10 +277,9 @@ a:hover:not (.active ) {
 		for (int x = 0; x < list.size(); x++)
 			regexString += list.get(x) + "\n";
 
-		//finding the main class name of the file
+		//Finding the main class name 
 
-		//Finding  methods
-		//Map designed with method name and method body
+		//Map designed with method name and body
 		Map<String, MainMethod> thisFileMethods = new HashMap();
 		Map<String, Integer> table1 = new HashMap();
 		Map<String, Integer> table2 = new HashMap();
@@ -320,7 +292,6 @@ a:hover:not (.active ) {
 		Pattern p = Pattern.compile("if( )*\\((.)*\\)( )*\\{(.|\\n)*?(\\d+#.*})");
 		Matcher mif = p.matcher(regexString);
 		while (mif.find()) {
-			// replace first number with "number" and second number with the first
 			String identifier = mif.group(5);
 			String ifIdentify = identifier.replace("}", "-if");
 			regexString = regexString.replace(identifier, ifIdentify);
@@ -341,21 +312,18 @@ a:hover:not (.active ) {
 		Matcher m = Pattern.compile("((.+\\(.*\\))( )*\\{(\\n|\\r|\\n|.)*?\\})").matcher(regexString);
 		while (m.find()) {
 
-			//name with access and return 
+			//Name with access and return 
 			String methodName = m.group(2);
 
 			String methodWithAccessAndReturn = (methodName.replaceAll("\\(.*\\)", ""));
 
 			String onlyMethodName = methodWithAccessAndReturn.substring(methodWithAccessAndReturn.lastIndexOf(" "));
 
-			//System.out.println(onlyMethodName);
-			System.out.println("\n__________________________________________");
-
 			MainMethod method = new MainMethod();
 			String methodBody = m.group().substring(m.group().indexOf("{"));
 			method.setMethodBody(methodBody);
 
-			//get no of the recursive call to own mwthod
+			//Get number of the recursive call to own method
 			Pattern pattern = Pattern.compile("(\\d*)#.*" + onlyMethodName);
 			Matcher matcher = pattern.matcher(methodBody);
 			//set recursive call no and put to method object
@@ -363,22 +331,17 @@ a:hover:not (.active ) {
 
 		//check if method recursive
 		method.setRecursiveCall(true);
-		// 			System.out.println(matcher.group() + " own method call found");
-		// 			System.out.println(matcher.group(1));
+		// 			System.out.println("own method call found");
 		method.setRecursiveCallNo(matcher.group(1));
 			}
 			System.out.println(thisFileMethods + "\n_________________________________________");
 
 			thisFileMethods.put(onlyMethodName, method);
 		}
-			
-
-		//size taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
-		// 	for (int x = 0; x < list.size(); x++)
-		// 		regexString += list.get(x) + "\n";
 	%>
 </div>
-	
+	<!-- Inheritance Complexity -->
+	<!-- Weight Changing -->
 	<form action="AccessFilesServlet" method="post" class="form-group" style="width: 50%; margin-left: 395px;">
 				<table class="table table-responsive-lg">
 					<caption style="caption-side: top; text-align:center; font-size:x-large;">Weights related to the Inheritance factor</caption>
@@ -408,6 +371,7 @@ a:hover:not (.active ) {
 			</form>
 	
 	<br>
+	<!-- Inheritance Complexit table -->
 	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table">
 		<colgroup>
 			<col style="width: 6%;">
@@ -420,11 +384,12 @@ a:hover:not (.active ) {
 			<col style="width: 6%;">
 			<col style="width: 10%;">
 		</colgroup>
-<h1 class="display-1"
-					style="padding-left: 366px; margin-left: 100px; font-family: century gothic; font-size: 50px;margin-top: 10px">
-					<font color="#00376c">Complexity of Inheritance</font>
-				</h1>
-				<br>
+
+		<h1 class="display-1"
+			style="padding-left: 366px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
+			<font color="#00376c">Complexity of Inheritance</font>
+		</h1>
+		<br>
 		<tbody>
 			<tr>
 				<th>Line No</th>
@@ -439,8 +404,7 @@ a:hover:not (.active ) {
 		Matcher extendedClass = Pattern.compile(".*extends( )+(.+)").matcher(className);
 		String fullClassMap = className;
 		if (extendedClass.find()) {
-
-			//	System.out.println(classesAndData.get(extendedClass.group(2).trim()).equals("")+"          dsssssssssssssssssss");
+			//	System.out.println(classesAndData.get(extendedClass.group(2).trim()).equals("")+"");
 
 			if (classesAndData.get(extendedClass.group(2).trim()).equals("")) {
 				fullClassMap = fullClassMap + "null";
@@ -491,7 +455,8 @@ a:hover:not (.active ) {
 										String lastExtend = className.substring(className.indexOf("extends"));
 										String fullClassMap = className;
 										System.out.println(
-												className.split("extends")[0] + "2111111111111111111111111111111111111");
+												className.split("extends")[0] + "Extendssssss");
+										//split the line from extends keyword
 										classNameCol = className.split("extends")[0];
 										Matcher extendedClass = Pattern.compile("extends( )+(.+)").matcher(className);
 										if (extendedClass.find()) {
@@ -512,7 +477,7 @@ a:hover:not (.active ) {
 										}
 
 									} else {
-										System.out.println(className + "2111111111111111111111111111111111111");
+										System.out.println(className + "Found");
 										classNameCol = className;
 										classScore = 0;
 									}
@@ -574,28 +539,4 @@ a:hover:not (.active ) {
 	%>
 
 </body>
-
-<script type="text/javascript">
-	mybutton = document.getElementById("myBtn");
-
-	//When the user scrolls down 20px from the top of the document, show the button
-	window.onscroll = function() {
-		scrollFunction()
-	};
-
-	function scrollFunction() {
-		if (document.body.scrollTop > 20
-				|| document.documentElement.scrollTop > 20) {
-			mybutton.style.display = "block";
-		} else {
-			mybutton.style.display = "none";
-		}
-	}
-	//When the user clicks on the button, scroll to the top of the document
-	function topFunction() {
-		document.body.scrollTop = 0; // For Safari
-		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-	}
-</script>
-
 </html>
