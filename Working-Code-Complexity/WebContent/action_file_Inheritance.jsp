@@ -111,11 +111,14 @@ li a:hover:not (.active ) {
 					<textarea class="form-control" rows="10" id="code" name="code"></textarea>
 				</div>
 			</div>
+			
+			<div style="margin-left: 318px;">
             <!--Control buttons-->
-			<input type="submit" value="Calculate" class="btn calculate-button" />
+			<input type="submit" value="Calculate" class="btn calculate-button" style="width: 11%;"/>
 			
 			<!--Button: clean-->
 				<button class="btn clear-button" type="reset">Clean</button>
+			</div>	
 			</hr>
 		</form>
 
