@@ -248,10 +248,12 @@ a:hover:not (.active ) {
 	
 </div>
 
-<h1 class="display-1"
+<div align="center">
+		<h1 class="display-1"
 			style="padding-left: 366px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
 			<font color="#00376c">Complexity of Inheritance</font>
 		</h1>
+</div>
 
 	<!-- Inheritance Complexity -->
 	<!-- Weight Changing -->

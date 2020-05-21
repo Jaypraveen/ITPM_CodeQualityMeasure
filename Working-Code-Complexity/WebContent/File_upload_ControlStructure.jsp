@@ -321,21 +321,21 @@ a:hover:not (.active ) {
 				id="sumbitButton" disabled>Save</button>
 		</div>
 	</form>
-
+<br>
 
 		<hr>
 		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name: <%=nowfile.getName()%></h1></center>
 		<hr>
 
 	<br>
+
+
+
+
+
 	<br>
 
-
-
-
-	<br>
-
-	<table class="table" style="width: 78%; margin-left: 184px;">
+	<table style="width: 78%; margin-left: 184px; background-color: #fff; " class="table table-bordered">
 		<colgroup>
 			<col style="width: 8%;">
 			<col style="width: 78%;">
