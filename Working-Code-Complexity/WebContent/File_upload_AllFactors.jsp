@@ -6,8 +6,7 @@
 <%@page import="com.model.MainMethod"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.util.regex.Matcher"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@ page import="javax.servlet.http.*"%>
 <%@ page import="org.apache.commons.fileupload.*"%>
@@ -125,7 +124,6 @@ a:hover:not (.active ) {
 
 			fileList = fileList.stream().filter(e -> e.getName().endsWith(".java")).collect(Collectors.toList());
 
-			//Get all methods and store them
 			//Get all VAr and store them
 			Map<String, String> allGlobalVar = new LinkedHashMap();
 			Map<String, MainMethod> allFileMethods = new HashMap();
@@ -139,7 +137,6 @@ a:hover:not (.active ) {
 			int no = 1;
 
 			while ((line = br.readLine()) != null) {
-				// process the line.
 				//Add to list for no and codeline
 				if (!line.trim().equals("")) {
 
@@ -215,7 +212,6 @@ a:hover:not (.active ) {
 
 			allFileMethods.put(onlyMethodName + "," + className, method);
 		}
-		//all methods are added
 
 		//check global vaiables
 
@@ -344,13 +340,13 @@ a:hover:not (.active ) {
 			// 			System.out.println(matcher.group(1));
 			method.setRecursiveCallNo(matcher.group(1));
 		}
-		System.out.println(thisFileMethods + "\n_________________________________________");
+		System.out.println(thisFileMethods + "\n");
 
 		thisFileMethods.put(onlyMethodName, method);
 	}
 		
 
-	//size taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
+
 	// 	for (int x = 0; x < list.size(); x++)
 	// 		regexString += list.get(x) + "\n";
 	%>
@@ -383,7 +379,6 @@ a:hover:not (.active ) {
 			<col style="width: 4%;">
 			<col style="width: 4%;">
 			<col style="width: 4%;">
-
 			<col style="width: 1%;">
 		</colgroup>
 
@@ -409,16 +404,11 @@ a:hover:not (.active ) {
 			<tr>
 				<th>no</th>
 				<th>Program statements</th>
-
-
 				<th>Nkw</th>
-
 				<th>Nid</th>
 				<th>Nop</th>
-
 				<th>Nnv</th>
 				<th>Nsl</th>
-
 				<th>CS</th>
 
 			</tr>
@@ -546,8 +536,6 @@ a:hover:not (.active ) {
 
 
 	<%
-		//size taaaaaaaaaaaaaaaabellllllllll endeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-
 	//all methods are added
 
 	//check global vaiables
@@ -613,7 +601,7 @@ a:hover:not (.active ) {
 	System.out.println(RecursiveToNormal + " RecursiveToNormal");
 	System.out.println(RecursiveToRecursive + " RecursiveToRecursive");
 
-	//variable complexity taaaaaaaaaaaaaaaabellllllllll starteeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddddddddddddddd
+	//variable complexity table start
 	%>
 	<center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of Variable</font>
@@ -645,22 +633,15 @@ a:hover:not (.active ) {
 			<tr>
 				<th>no</th>
 				<th>Program statements</th>
-
-
 				<th>Wvs</th>
-
 				<th>Npdtv</th>
 				<th>Ncdtv</th>
-
 				<th>Cv</th>
-
-
 			</tr>
 			<%
 				//validate size table
 
 			// 				thisFileMethods.entrySet().stream().forEach(e->{
-
 			// 					System.out.println(e.getValue().getMethodBody());
 			// 				});
 
@@ -715,13 +696,9 @@ a:hover:not (.active ) {
 
 				<td><%=originalCodeLine.substring(0, originalCodeLine.indexOf("#"))%></td>
 				<td><%=originalCodeLine.substring(originalCodeLine.indexOf("#") + 1)%></td>
-
 				<td><%=scopeType%></td>
-
 				<td><%=primitive%></td>
-
 				<td><%=global%></td>
-
 				<%
 					table2.put(number, scopeType * ((1 * primitive) + (2 * global)));
 				%>
@@ -756,7 +733,6 @@ a:hover:not (.active ) {
 			<col style="width: 1%;">
 			<col style="width: 48%;">
 			<col style="width: 1%;">
-
 			<col style="width: 4%;">
 			<col style="width: 4%;">
 			<col style="width: 4%;">
@@ -785,16 +761,10 @@ a:hover:not (.active ) {
 				<th>Program statements</th>
 				<th>Wmrt</th>
 				<th>Npdtp</th>
-
 				<th>Ncdtp</th>
 				<th>Cm</th>
 
-
-
 			</tr>
-
-
-		
 
 			<%
 				for (int i1 = 0; i1 < list.size(); i1++) {
@@ -867,7 +837,6 @@ a:hover:not (.active ) {
 			<col style="width: 1%;">
 			<col style="width: 48%;">
 			<col style="width: 1%;">
-
 			<col style="width: 4%;">
 			<col style="width: 4%;">
 			<col style="width: 4%;">
@@ -900,19 +869,14 @@ a:hover:not (.active ) {
 				<th>Program statements</th>
 				<th>Nr</th>
 				<th>Nmcms</th>
-
 				<th>Nmcmd</th>
 				<th>Nmcmrs</th>
-
 				<th>Nmcrmd</th>
 				<th>Nrmcrms</th>
-
 				<th>Nrmcrmd</th>
 				<th>Nrmcms</th>
-
 				<th>Nrmcmd</th>
 				<th>Nmrgvs</th>
-
 				<th>Nmrgvd</th>
 				<th>Nrmrgvs</th>
 				<th>Nrmrgvd</th>
@@ -1135,7 +1099,6 @@ a:hover:not (.active ) {
 			<col style="width: 1%;">
 			<col style="width: 48%;">
 			<col style="width: 1%;">
-
 			<col style="width: 4%;">
 			<col style="width: 4%;">
 
@@ -1152,16 +1115,10 @@ a:hover:not (.active ) {
 			<tr>
 				<th>no</th>
 				<th>Program statements</th>
-
-
 				<th>Wtcs</th>
-
 				<th>NC</th>
 				<th>Ccspps</th>
-
 				<th>Ccs</th>
-
-
 			</tr>
 
 
@@ -1438,19 +1395,13 @@ a:hover:not (.active ) {
 			<tr>
 				<th>no</th>
 				<th>Program statements</th>
-
-
 				<th>Cs</th>
-
 				<th>Cv</th>
 				<th>Cm</th>
-
 				<th>Ci</th>
-
 				<th>Ccp</th>
 				<th>Ccs</th>
 				<th>Tcps</th>
-
 			</tr>
 
 
