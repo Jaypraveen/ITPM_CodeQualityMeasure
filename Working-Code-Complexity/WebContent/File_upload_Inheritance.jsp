@@ -262,7 +262,7 @@ a:hover:not (.active ) {
 					<caption style="caption-side: top; text-align:center; font-size:x-large;">Weights related to the Inheritance factor</caption>
 					<thead class="table-dark">
 						<tr>
-							<th scope="col" style="text-align:center">Program Component</th>
+							<th scope="col" style="text-align:center">Inherited Pattern </th>
 							<th scope="col" style="text-align:center">Weight</th>
 						</tr>
 					</thead>
