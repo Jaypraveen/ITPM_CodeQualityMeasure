@@ -1378,10 +1378,6 @@ li a:hover:not (.active ) {
 	<br>
 	<br>
 
-
-
-
-
   <center><h1  margin-left: 100px; font-family: century gothic; font-size: 30px; margin-top: 10px">
 			<font color="#00376c">Complexity of All the factors</font>
 		</h1></center>
