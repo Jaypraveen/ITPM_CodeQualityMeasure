@@ -93,29 +93,17 @@ li a:hover:not (.active ) {
 		</hr>
 		<form action="action_file_upload_allfactors.jsp" method="post"
 			enctype="multipart/form-data">
-			<input id="myInput" type="file" name="file" webkitdirectory directory
+			<input id="input-file" type="file" name="file" webkitdirectory directory
 				multiple="multiple" size="50" /> <br /> <br />
 			<div style="margin-left: 69px;">
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -70px; font-weight: normal; width: 81%;">
 					<label for="complexity">Programming Language :</label> <select
 						class="custom-select" name="language">
-
 						<option value="1">Java</option>
 						<option value="2">C++</option>
-
 					</select>
 				</div>
-				<div class="form-group" style="font-size: 20px; margin-left: 250px; font-weight: normal;">
-				<label for="complexity">Complexity Type:</label> 
-				<select class="custom-select" name ="type">
-
-					<option value="1">By Size</option>
-					<option value="2">By Control Structure</option>
-					<option value="3">By Inheritance</option>
-					<option value="4">By Recursion</option>
-				</select>
-			</div>
 
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -69px; width: 81%; font-weight: normal;">

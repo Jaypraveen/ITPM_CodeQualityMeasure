@@ -623,7 +623,6 @@ li a:hover:not (.active ) {
 			<col style="width: 1%;">
 			<col style="width: 48%;">
 			<col style="width: 1%;">
-
 			<col style="width: 4%;">
 			<col style="width: 4%;">
 
