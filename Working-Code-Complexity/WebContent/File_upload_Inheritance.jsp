@@ -268,14 +268,29 @@ a:hover:not (.active ) {
 					</thead>
 					<tbody>
 						<tr class="table-secondary">
-							<td class="d-flex justify-content-center">Direct Inheritance Weight</td>
+							<td class="d-flex justify-content-center">A class with no inheritance</td>
 							<td><input class="form-control" type="number"
 								name="inputPrimitiveReturnWeight" id="inputPrimitiveReturnWeight" value="1"></td>
 						</tr>
 						<tr class="table-secondary">
-							<td class="d-flex justify-content-center">Indirect Inheritance Weight</td>
+							<td class="d-flex justify-content-center"> One user-defined class </td>
 							<td><input class="form-control" type="number"
 								name="inputCompositeReturnWeight" id="inputCompositeReturnWeight" value="2"></td>
+						</tr>
+						<tr class="table-secondary">
+							<td class="d-flex justify-content-center">Two user-defined classes</td>
+							<td><input class="form-control" type="number"
+								name="inputOperatorWeight" value="1"></td>
+						</tr>
+						<tr class="table-secondary">
+							<td class="d-flex justify-content-center">Three user-defined classes</td>
+							<td><input class="form-control" type="number"
+								name="inputNumericsWeight" value="1"></td>
+						</tr>
+						<tr class="table-secondary">
+							<td class="d-flex justify-content-center">More than three user-defined classes</td>
+							<td><input class="form-control" type="number"
+								name="inputStringsWeight" value="1"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -303,7 +318,6 @@ a:hover:not (.active ) {
 			<col style="width: 6%;">
 			<col style="width: 10%;">
 		</colgroup>
-
 		
 		<br>
 		<tbody>

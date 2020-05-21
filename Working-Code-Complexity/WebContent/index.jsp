@@ -29,12 +29,10 @@
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
 
-
 <link rel="stylesheet" type="text/css" href="CSS/main.css">
 <link rel="stylesheet" href="CSS/style.css" />
 <!--background: linear-gradient(45deg, #8614ce, #ff0057);-->
 <title>Code Quality Measure</title>
-
 </head>
 <body class="body">
 
@@ -77,8 +75,6 @@
 			<br><br>
 
 		<form action="AccessFileServlet" method="post" name="form">
-
-
 			<div class="custom-file col-4">
 				<input type="file" class="custom-file-input" id="input-file"
 					name="code"> <label class="custom-file-label"
@@ -91,8 +87,6 @@
 						type="button" title="Use this if you have a zipped file">
 						Unzip File</button></a>
 			</div>
-
-		
 
 			<div class="form-group container-fluid"
 				style="font-size: 25px; font-weight: normal; width: 58%;">
@@ -112,7 +106,6 @@
 					<textarea class="form-control" rows="11" id="code" name="demo" style="width: 57%; margin-left: 311px;"></textarea>
 				</div>
 			</div>
-
 			<!--Control buttons-->
 			<div class="control-buttons">
 				<!--Button: enter-->
@@ -124,18 +117,14 @@
 			</div>
 		</form>
 		<!--Results viewer-->
-
 		<br> <br>
 	</div>
-
 	<!--Footer-->
 	<div>
 	<footer class="page-footer">
 		<img class="footer-image" src="Images/footer-image-crop.png" >
 	</footer>
 	</div>
-	
-
 	<!-- Javascript -->
 	<script type="text/javascript" src="JS/jqueryComp.js"></script>
 	<script type="text/javascript"
@@ -147,7 +136,5 @@
 
 	<script data-require="angularjs@1.3.6" data-semver="1.3.6"
 		src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.6/angular.min.js"></script>
-
-
 </body>
 </html>

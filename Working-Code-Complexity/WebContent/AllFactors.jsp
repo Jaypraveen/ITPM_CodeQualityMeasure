@@ -73,29 +73,26 @@ li a:hover:not (.active ) {
 				<!--Heading-->
 				<h1 class="heading">Code Quality Measure</h1>
 			</header>
-
 		</div>
 	</section>
-
-
 	
 	<h1 style="color:#FFFAFA; font-size:64px; text-align: center;">All Factors</h1>
-	<div style="margin-left: 529px; margin-top: 26px;">
+	<div style="margin-left: 448px; margin-top: 26px;">
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
 	    <a class="btn btn-primary" href="Inheritance.jsp" role="button">Inheritance</a>
 	    <a class="btn btn-primary" href="action_file_Coupeling.jsp" role="button">Coupeling</a>
 	    <a class="btn btn-primary" href="AllFactors.jsp" role="button">All Factors</a>
    </div><br><br>
-	<div style="margin-left: 369px;">
+	<div style="margin-left: 369px; color: white;">
 		<h1>Select Folder:</h1>
 		<br />
 		</hr>
 		<form action="File_upload_AllFactors.jsp" method="post"
-			enctype="multipart/form-data">
+			enctype="multipart/form-data" >
 			<input id="input-file" type="file" name="file" webkitdirectory directory
 				multiple="multiple" size="50" /> <br /> <br />
-			<div style="margin-left: 69px;">
+			<div style="margin-left: 69px;" color: white;>
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -70px; font-weight: normal; width: 81%;">
 					<label for="complexity">Programming Language :</label> <select
@@ -121,9 +118,7 @@ li a:hover:not (.active ) {
 	<div class="footer-container">
 		<!--Footer image-->
 		<img class="footer-image" src="Images/footer-image-crop.png" alt="">
-
 	</div>
-
 	</div>
 
 	<!-- Javascript -->
