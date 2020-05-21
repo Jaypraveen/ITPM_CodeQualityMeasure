@@ -68,7 +68,6 @@
          <h1 style="color:#FFFAFA; font-size:64px; text-align: center; margin-top: -41px;">Size,Variable,Method</h1>
      
      	<div style="text-align: center;">
-
 				<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 				<a class="btn btn-primary" href="Action-file-ControlStructure.jsp" role="button">Control Structures</a> 
 				<a class="btn btn-primary" href="action_file_Inheritance.jsp" role="button">Inheritance</a> 
