@@ -106,7 +106,6 @@ a:hover:not (.active ) {
 				try {
 			List fileItems = upload.parseRequest(request);
 			Iterator i = fileItems.iterator();
-			out.println("<h1>Uploaded Files</h1>");
 			while (i.hasNext()) {
 				FileItem fi = (FileItem) i.next();
 				if (!fi.isFormField()) {
@@ -207,9 +206,6 @@ a:hover:not (.active ) {
 		%>
 	</div>
 	
-	<hr>
-	<h1 id="<%="id"+nowfile.getName().replaceAll(" ","")%>"><%=nowfile.getName()%></h1>
-	<hr>
 	<div hidden>
 	<%
 		List<String> list = new ArrayList();
@@ -249,7 +245,14 @@ a:hover:not (.active ) {
 	
 	%>
 	
+	
 </div>
+
+<h1 class="display-1"
+			style="padding-left: 366px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
+			<font color="#00376c">Complexity of Inheritance</font>
+		</h1>
+
 	<!-- Inheritance Complexity -->
 	<!-- Weight Changing -->
 	<form action="AccessFilesServlet" method="post" class="form-group" style="width: 50%; margin-left: 395px;">
@@ -280,6 +283,10 @@ a:hover:not (.active ) {
 				</div>
 			</form>
 	
+	<hr>
+		<center><h1 id="<%="id" + nowfile.getName().replaceAll(" ", "")%>">File Name:<%=nowfile.getName()%></h1></center>
+		<hr>
+	
 	<br>
 	<!-- Inheritance Complexit table -->
 	<table  style="width: 78%; margin-left: 184px; background-color: #fff; " class="table">
@@ -295,10 +302,7 @@ a:hover:not (.active ) {
 			<col style="width: 10%;">
 		</colgroup>
 
-		<h1 class="display-1"
-			style="padding-left: 366px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
-			<font color="#00376c">Complexity of Inheritance</font>
-		</h1>
+		
 		<br>
 		<tbody>
 			<tr>
