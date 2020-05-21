@@ -33,7 +33,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/main.css">
 <link rel="stylesheet" href="CSS/style.css" />
 <!--background: linear-gradient(45deg, #8614ce, #ff0057);-->
-<title>Insert title here</title>
+<title>Code Quality Measure</title>
 
 </head>
 <body class="body">
@@ -65,6 +65,17 @@
 		<!-- 
     
      -->
+         <h1 style="color:#FFFAFA; font-size:64px; text-align: center; margin-top: -41px;">Size,Variable,Method</h1>
+     
+     	<div style="text-align: center;">
+
+				<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
+				<a class="btn btn-primary" href="Action-file-ControlStructure.jsp" role="button">Control Structures</a> 
+				<a class="btn btn-primary" href="action_file_Inheritance.jsp" role="button">Inheritance</a> 
+				<a class="btn btn-primary" href="action_file_Coupeling.jsp" role="button">Coupeling</a>
+				<a class="btn btn-primary" href="action_file_allfactors.jsp" role="button">All Factors</a>
+			</div>
+			<br><br>
 
 		<form action="AccessFileServlet" method="post" name="form">
 
@@ -82,21 +93,11 @@
 						Unzip File</button></a>
 			</div>
 
-			<div style="text-align: center;">
-
-				<a class="btn btn-light" href="index.jsp" role="button">Size,Variable,Method</a>
-
-				<a class="btn btn-light" href="Action-file-ControlStructure.jsp"
-					role="button">Control Structures</a> <a class="btn btn-light"
-					href="action_file_Inheritance.jsp" role="button">Inheritance</a> <a
-					class="btn btn-light" href="action_file_Coupeling.jsp"
-					role="button">Coupeling</a> <a class="btn btn-light"
-					href="action_file_allfactors.jsp" role="button">All Factors</a>
-			</div>
+		
 
 			<div class="form-group container-fluid"
-				style="font-size: 20px; font-weight: normal;">
-				<label for="complexity">Complexity Type:</label> <select
+				style="font-size: 25px; font-weight: normal; width: 58%;">
+				<label for="complexity" style="margin-right: 639px;">Complexity Type:</label> <select
 					class="custom-select" name="type">
 
 					<option value="1">By Size</option>
@@ -106,9 +107,10 @@
 			</div>
 
 			<div class="display-code"
-				style="font-size: 25px; font-weight: normal;">
+				style="font-size: 25px; font-weight: normal; ">
 				<div class="container-fluid">
-					<textarea class="form-control" rows="11" id="code" name="demo"></textarea>
+				<label for="code" style="margin-right: 700px;">Enter Code:</label>
+					<textarea class="form-control" rows="11" id="code" name="demo" style="width: 57%; margin-left: 311px;"></textarea>
 				</div>
 			</div>
 
@@ -125,7 +127,6 @@
 		<!--Results viewer-->
 
 		<br> <br>
-
 	</div>
 
 	<!--Footer-->
