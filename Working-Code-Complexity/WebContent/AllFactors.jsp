@@ -77,7 +77,7 @@ li a:hover:not (.active ) {
 	</section>
 	
 	<h1 style="color:#FFFAFA; font-size:64px; text-align: center;">All Factors</h1>
-	<div style="margin-left: 448px; margin-top: 26px;">
+	<div style="text-align: center; margin-top: 26px;">
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
 	    <a class="btn btn-primary" href="Inheritance.jsp" role="button">Inheritance</a>
@@ -86,8 +86,6 @@ li a:hover:not (.active ) {
    </div><br><br>
 	<div style="margin-left: 369px; color: white;">
 		<h1>Select Folder:</h1>
-		
-		
 		
 
 		</hr>
@@ -121,8 +119,12 @@ li a:hover:not (.active ) {
 					<textarea class="form-control" rows="10" id="code" name="code"></textarea>
 				</div>
 			</div>
-
-			<input type="submit" value="Calculate" class="btn btn-primary btn-lg" />
+<div style="text-align: -webkit-center;">
+            <!--Control buttons-->
+			<input type="submit" value="Calculate" class="btn calculate-button" style="width: 15%; height: 7%; "/>
+			<!--Button: clean-->
+				<button class="btn clear-button" type="reset" style="width: 15%; height: 7%;">Clean</button>
+			</div>
 			</hr>
 		</form>
 
