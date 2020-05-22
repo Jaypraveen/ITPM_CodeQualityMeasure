@@ -86,12 +86,25 @@ li a:hover:not (.active ) {
    </div><br><br>
 	<div style="margin-left: 369px; color: white;">
 		<h1>Select Folder:</h1>
-		<br />
+		
+		
+		
+
 		</hr>
 		<form action="File_upload_AllFactors.jsp" method="post"
 			enctype="multipart/form-data" >
 			<input id="input-file" type="file" name="file" webkitdirectory directory
 				multiple="multiple" size="50" /> <br /> <br />
+				
+				
+		<div class="form-group">
+				 <a	href="unzipFiles.jsp"><button class="btn btn-secondary"
+						type="button" title="Use this if you have a zipped file">
+						Unzip File</button></a>
+						<span class="help-block">If your file is zipped, Click here</span>
+				</div>
+				
+				
 			<div style="margin-left: 69px;" color: white;>
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -70px; font-weight: normal; width: 81%;">

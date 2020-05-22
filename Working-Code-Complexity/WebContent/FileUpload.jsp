@@ -207,8 +207,8 @@ $(function(){
  
   </nav-->
 <div>
-	<div  class="form-group mt-3" style="color: white; margin-left: 618px;">
-		<h1 style="font-size:25x;">UPLOAD YOUR FILE:</h1>
+	<div style="margin-left: 408px;">
+		<h1 style="color: white;">Select Folder:</h1>
 		<input type="file" name="FileUpload">
 	</div>
 	
@@ -217,14 +217,14 @@ $(function(){
 
 		<br>
 
-		<label for="code" style="color: white; margin-left: 626px; font-size:25px;">Enter Code:</label>
-		<div align=center class="form-group mt-3" style=" margin-left: 274px; width: 78%; font-weight: normal;">
+		<label for="code" style="color: white; margin-left: 406px; font-size:25px;">Enter Code:</label>
+		<div align=center class="form-group mt-3" style=" margin-left: 160px; width: 78%; font-weight: normal;">
              
-			<textarea style="width: 53%;" rows="6" cols="80" name="code" required></textarea>
+			<textarea style="width: 53%;"  rows="6" cols="80" name="code" required></textarea>
 		</div>
 		</div>
 
-		<select id="selectOption" name="selectFactor" onchange="setDiv()" style="margin-left: 627px;"
+		<select id="selectOption" name="selectFactor" onchange="setDiv()" style="margin-left: 541px;"
 			required>
 			<option value="">~Select~</option><br>
 			<option value="coupling">Coupling</option>
