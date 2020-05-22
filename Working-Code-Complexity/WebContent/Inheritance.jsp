@@ -77,7 +77,6 @@ li a:hover:not (.active ) {
 	
 	<h1 style="color:#FFFAFA; font-size:64px; text-align: center; ">Inheritance</h1>
 	<!-- Page Navigation Buttons  -->
-	
 	<div style="text-align: center; margin-top: 26px;">
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
