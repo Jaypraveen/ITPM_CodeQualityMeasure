@@ -20,7 +20,7 @@ public class VariableComplexity {
 		int start;
 		int end;
 		boolean isLinePresent;
-
+		
 		int wvs;
 		int wvsg;
 		int wvsl;

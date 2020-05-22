@@ -139,7 +139,7 @@ background-color
 </style>
 <title>Code Quality Measure</title>
 </head>
-<body>
+<body style="background-color: #cccccc">
 	<div>
 		<ul>
 			<li><a href="index.jsp" style="text-decoration: none;">Home</a></li>
@@ -147,15 +147,14 @@ background-color
 		</ul>
 	</div>
 	<br>
-
-	<div style="text-align: center;">
+	<div style="text-align: center; margin-top: 5%">
 		<h1>Unzip Files</h1>
 	</div>
 
 	<br>
 	<br>
 	<div class="container-fluid"
-		style="text-align: center; margin-top: 10%">
+		style="text-align: center; margin-top: 5%">
 		<form action="UnzipFileServlet" method="post">
 			<div class="custom-file col-4">
 				<input type="file" class="custom-file-input " id="unzip"
