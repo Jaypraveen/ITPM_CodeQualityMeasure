@@ -219,29 +219,8 @@ background-color
 			<br>
 
 		</div>
+		<!-- 
 		<div>
-			<!-- 
-		<div class="form-group" style="font-size: 20px; font-weight: normal;">
-				<label for="complexity">Change weight:</label> <select
-					class="custom-select" name="weightOfVariables">
-					<option value="1">Weight of Wvs</option>
-					<option value="2">Weight of Wpdtv</option>
-					<option value="3">Weight of Wcdtv</option>
-				</select>
-
-				<div class="input-group input-group-sm mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-sm">Weight</span>
-					</div>
-					<input type="text" name="weightVariables" id="weightVariables"  class="form-control" aria-label="Small"
-						aria-describedby="inputGroup-sizing-sm">
-				</div>
-				<div class="col text-right">
-					<button class="btn btn-dark" type="submit" name="sumbitButton"
-						id="sumbitButton">Submit</button>
-				</div>
-			</div>
-		 -->
 			<form action="CustomWeightsServlet" method="post" class="form-group">
 				<table class="table table-responsive-lg">
 					<caption
@@ -288,6 +267,8 @@ background-color
 			</form>
 
 		</div>
+		 -->
+		
 
 		<table class="table" style="font-family: century gothic"
 			cellpadding="20px" cellspacing="20px" align="center" border="2">

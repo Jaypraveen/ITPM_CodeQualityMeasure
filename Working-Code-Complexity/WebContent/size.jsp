@@ -93,6 +93,7 @@ background-color
 			<br>
 
 		</div>
+		<!-- 
 		<div>
 			<form action="CustomWeightsServlet" method="post" class="form-group">
 				<table class="table table-responsive-lg">
@@ -141,6 +142,8 @@ background-color
 				</div>
 			</form>
 		</div>
+		 -->
+		
 
 		<table class="table" style="font-family: century gothic"
 			cellpadding="20px" cellspacing="20px" align="center" border="2">
