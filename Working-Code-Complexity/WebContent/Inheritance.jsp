@@ -82,7 +82,7 @@ li a:hover:not (.active ) {
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
 	    <a class="btn btn-primary" href="Inheritance.jsp" role="button">Inheritance</a>
-	    <a class="btn btn-primary" href="action_file_Coupeling.jsp" role="button">Coupling</a>
+	    <a class="btn btn-primary" href="aFileUpload.jsp" role="button">Coupling</a>
 	    <a class="btn btn-primary" href="AllFactors.jsp" role="button">All Factors</a>
    </div><br>
 	<div style="margin-left: 369px; color: white;">
@@ -117,16 +117,15 @@ li a:hover:not (.active ) {
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -69px; width: 81%; font-weight: normal;">
 					<label for="code">Enter Code:</label>
-					<textarea class="form-control" rows="10" id="code" name="code" style="text-align: center;"></textarea>
+					<textarea class="form-control" rows="10" id="code" name="code" ></textarea>
 				</div>
 			</div>
-			
-			<div style="margin-left: 289px;">
+
+			<div style="text-align: -webkit-center;">
             <!--Control buttons-->
-			<input type="submit" value="Calculate" class="btn calculate-button" style="width: 15%; height: 7%"/>
-			
+			<input type="submit" value="Calculate" class="btn calculate-button" style="width: 15%; height: 7%; "/>
 			<!--Button: clean-->
-				<button class="btn clear-button" type="reset" style="width: 15%; height: 7%">Clean</button>
+				<button class="btn clear-button" type="reset" style="width: 15%; height: 7%;">Clean</button>
 			</div>	
 			</hr>
 		</form>
@@ -136,7 +135,6 @@ li a:hover:not (.active ) {
 	<div class="footer-container">
 		<!--Footer image-->
 		<img class="footer-image" src="Images/footer-image-crop.png" alt="">
-
 	</div>
 
 	</div>
