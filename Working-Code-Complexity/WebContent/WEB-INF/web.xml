@@ -53,12 +53,5 @@
     <servlet-name>UnzipFileServlet</servlet-name>
     <url-pattern>/UnzipFileServlet/*</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>CustomWeightsServlet</servlet-name>
-    <servlet-class>com.servlet.CustomWeightsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CustomWeightsServlet</servlet-name>
-    <url-pattern>/CustomWeightsServlet/*</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

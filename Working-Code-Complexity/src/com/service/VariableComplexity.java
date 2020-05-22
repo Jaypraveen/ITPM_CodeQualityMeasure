@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.ArrayList;
 
+import com.servlet.AccessFileServlet;
+
 import utils.IndividualFunction;
 import utils.StatementLine;
 
@@ -9,6 +11,8 @@ public class VariableComplexity {
 	//There is a small issue
 	public static ArrayList<StatementLine> variableByScope(ArrayList<IndividualFunction> functionList,
 			String[] codeArray) {
+		
+		
 		int x;
 		int y;
 		int z;
@@ -51,7 +55,7 @@ public class VariableComplexity {
 							break;
 						} else {
 							System.out.println("A globle variable");
-							wvsg += 2;
+							wvsg += AccessFileServlet.userInputGlobalWeight;
 						}
 
 					}
@@ -65,7 +69,7 @@ public class VariableComplexity {
 							break;
 						} else {
 							System.out.println("A local variable");
-							wvsl++;
+							wvsl+=AccessFileServlet.userInputLocalWeight;
 						}
 
 					}
@@ -142,7 +146,7 @@ public class VariableComplexity {
 							break;
 						} else {
 							System.out.println("A primitive data type variable");
-							wpdtv++;
+							wpdtv+=AccessFileServlet.userInputPrimitiveVariableWeight;
 						}
 					}
 				}
@@ -193,6 +197,7 @@ public class VariableComplexity {
 		int wcdtv;
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
+		
 		String[] divideBySpaces;
 		if (functionList.size() == 0) {
 			return null;
@@ -220,7 +225,7 @@ public class VariableComplexity {
 								break;
 							} else {
 								System.out.println("A composite data type variable");
-								wcdtv += 2;
+								wcdtv += AccessFileServlet.userInputCompositeVariableWeight;
 							}
 
 						}
@@ -232,7 +237,7 @@ public class VariableComplexity {
 								break;
 							} else {
 								System.out.println("A composite data type variable");
-								wcdtv += 2;
+								wcdtv += AccessFileServlet.userInputCompositeVariableWeight;
 							}
 
 						}

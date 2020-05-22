@@ -2,14 +2,17 @@ package com.service;
 
 import java.util.ArrayList;
 
+import com.servlet.AccessFileServlet;
+
 import utils.IndividualFunction;
 import utils.StatementLine;
 
 public class SizeComplexity {
 
-	// Working - not exactly 
+	// Working - not exactly
 	/**
 	 * Take a count of operators and calculate
+	 * 
 	 * @param functionList
 	 * @param codeArray
 	 * @return
@@ -27,13 +30,14 @@ public class SizeComplexity {
 
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
+
 		String[] divideBySpaces;
-		//Checking whether the function list is null or not
+		// Checking whether the function list is null or not
 		if (functionList.size() == 0) {
 			return null;
 		}
 
-		
 		for (x = 0; x < functionList.size(); x++) {
 			IndividualFunction f1 = functionList.get(x);
 			start = f1.getStart();
@@ -67,9 +71,9 @@ public class SizeComplexity {
 							|| divideBySpaces[y].equals("&=") || divideBySpaces[y].equals("%=")) {
 						if (codeArray[start].contains("//")) {
 							System.out.println("Comment--------------------------------------------");
-							break;
+							//break;
 						} else {
-							wop++;
+							wop += AccessFileServlet.userInputOperatorWeight;
 						}
 					}
 				}
@@ -119,7 +123,7 @@ public class SizeComplexity {
 		boolean isLinePresent;
 
 		int wnv;
-
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
 		String[] divideBySpaces;
@@ -144,9 +148,10 @@ public class SizeComplexity {
 					if (Character.isDigit(codeArray[start].charAt(y))) {
 						if (!isPreviousDigit) {
 							if (codeArray[start].contains("{") || codeArray[start].contains("//")) {
-								break;
+								//break;
+								System.out.println("Comment------------------------");
 							} else {
-								wnv++;
+								wnv += AccessFileServlet.userInputNumericsWeight;
 								isPreviousDigit = true;
 							}
 						}
@@ -198,7 +203,7 @@ public class SizeComplexity {
 		boolean isLinePresent;
 
 		int wsl;
-
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
 		String[] divideBySpaces;
@@ -220,9 +225,9 @@ public class SizeComplexity {
 					if (divideBySpaces[y].contains("\"") && (divideBySpaces[y].contains("\""))) {
 						if (codeArray[start].contains("//")) {
 							System.out.println("Comment--------------------------------------------");
-							break;
+							//break;
 						} else {
-							wsl++;
+							wsl += AccessFileServlet.userInputStringsWeight;
 						}
 					}
 				}
@@ -272,6 +277,8 @@ public class SizeComplexity {
 
 		int wkw;
 
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
+
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
 		String[] divideBySpaces;
@@ -286,6 +293,7 @@ public class SizeComplexity {
 
 			while (start != end + 1) {
 				wkw = 0;
+				// System.out.println("Value of wkw is = " + wkw);
 				System.out.println("Line number " + start + " : " + codeArray[start]);
 
 				divideBySpaces = codeArray[start].split("\\s");
@@ -310,9 +318,9 @@ public class SizeComplexity {
 							|| divideBySpaces[y].equals("volatile") || divideBySpaces[y].equals("continue")) {
 						if (codeArray[start].contains("//")) {
 							System.out.println("Comment--------------------------------------------");
-							break;
+							//break;
 						} else {
-							wkw++;
+							wkw += AccessFileServlet.userInputKeywordWeight;
 						}
 					}
 				}
@@ -349,7 +357,7 @@ public class SizeComplexity {
 
 	}
 
-	// Not working
+	// working
 	public static ArrayList<StatementLine> sizeByKeyIdentifires(ArrayList<IndividualFunction> functionList,
 			String[] codeArray) {
 		int x;
@@ -363,6 +371,8 @@ public class SizeComplexity {
 		int wid;
 
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
+
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
 
 		String[] divideBySpaces;
 		if (functionList.size() == 0) {
@@ -380,17 +390,61 @@ public class SizeComplexity {
 
 				divideBySpaces = codeArray[start].split("\\s");
 				for (y = 0; y < divideBySpaces.length; y++) {
-					if (divideBySpaces[y].equals("&&")) {
-
+					if (codeArray[y].contains("if")
+							|| codeArray[y].contains("while") && codeArray[y].contains("(")
+									&& codeArray[y].contains("boolean")
+							|| codeArray[y].contains("byte") || codeArray[y].contains("char")
+							|| codeArray[y].contains("short") || codeArray[y].contains("long")
+							|| codeArray[y].contains("double") || codeArray[y].contains("int")
+							|| codeArray[y].contains("float") && codeArray[y].contains(")")
+									&& codeArray[y].contains("{")) {
+						System.out.println("If statement or while");
 						if (codeArray[start].contains("//")) {
-						System.out.println("Comment--------------------------------------------");
-							break;
+							System.out.println("Comment--------------------------------------------");
+							//break;
 						} else {
-							wid++;
+							wid += AccessFileServlet.userInputIdentifiersWeight;
+						}
+
+					}
+					else
+
+					if (codeArray[y].contains("do") && codeArray[y].contains("{")
+							&& codeArray[y].contains("while") && codeArray[y].contains("(")
+							&& codeArray[y].contains("boolean") || codeArray[y].contains("byte")
+							|| codeArray[y].contains("char") || codeArray[y].contains("short")
+							|| codeArray[y].contains("long") || codeArray[y].contains("double")
+							|| codeArray[y].contains("int")
+							|| codeArray[y].contains("float") && codeArray[y].contains(")")) {
+						System.out.println("Do while loop statement");
+						if (codeArray[start].contains("//")) {
+							System.out.println("Comment--------------------------------------------");
+							//break;
+						} else {
+							wid += AccessFileServlet.userInputIdentifiersWeight;
+						}
+
+					}
+					else
+
+					if (codeArray[y].contains("switch") && codeArray[y].contains("(")
+							&& codeArray[y].contains("while") && codeArray[y].contains("boolean")
+							|| codeArray[y].contains("byte") || codeArray[y].contains("char")
+							|| codeArray[y].contains("short") || codeArray[y].contains("long")
+							|| codeArray[y].contains("double") || codeArray[y].contains("int")
+							|| codeArray[y].contains("float") && codeArray[y].contains(")")
+									&& codeArray[y].contains("{")) {
+						System.out.println("Do while loop statement");
+						if (codeArray[start].contains("//")) {
+							System.out.println("Comment--------------------------------------------");
+							//break;
+						} else {
+							wid += AccessFileServlet.userInputIdentifiersWeight;
 						}
 
 					}
 				}
+
 				StatementLine s1 = new StatementLine(start, wid);
 				statementList.add(s1);
 				start++;

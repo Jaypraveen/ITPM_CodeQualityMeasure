@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.ArrayList;
 
+import com.servlet.AccessFileServlet;
+
 import utils.IndividualFunction;
 import utils.StatementLine;
 
@@ -20,7 +22,9 @@ public class MethodComplexity {
 		int wmrt;
 		int wmrtp;
 		int wmrtc;
-
+int voidMeth;
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
+		
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
 
 		String[] divideBySpaces;
@@ -37,11 +41,12 @@ public class MethodComplexity {
 				wmrt = 0;
 				wmrtp = 0;
 				wmrtc = 0;
+				voidMeth = 0;
 				System.out.println("Line number " + start + " : " + codeArray[start]);
 
 				if (codeArray[start].contains("public") && codeArray[start].contains("void")) {
 					System.out.println("A method with a \"void\"");
-					break;
+					voidMeth += AccessFileServlet.userInputVoidReturnWeight;
 				}
 
 				divideBySpaces = codeArray[start].split("\\s");
@@ -56,7 +61,7 @@ public class MethodComplexity {
 							break;
 						} else {
 							System.out.println("Primitive return type");
-							wmrtp++;
+							wmrtp += AccessFileServlet.inputPrimitiveReturnWeight;
 						}
 
 					}
@@ -71,12 +76,12 @@ public class MethodComplexity {
 							break;
 						} else {
 							System.out.println("Primitive return type");
-							wmrtc += 2;
+							wmrtc = AccessFileServlet.userInputCompositeReturnWeight += 2;
 						}
 					}
 
 				}
-				wmrt = wmrtp + wmrtc;
+				wmrt = voidMeth + wmrtp + wmrtc;
 				// ---------------------------------
 
 				StatementLine s1 = new StatementLine(start, wmrt);
@@ -126,7 +131,8 @@ public class MethodComplexity {
 		int wpdtp;
 
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
-
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
+		
 		String[] divideBySpaces;
 		if (functionList.size() == 0) {
 			return null;
@@ -164,7 +170,7 @@ public class MethodComplexity {
 							break;
 						} else {
 							System.out.println("Primitive return type parameters");
-							wpdtp++;
+							wpdtp += AccessFileServlet.userInputPrimitiveParaWeight;
 						}
 					}
 					/*
@@ -220,7 +226,7 @@ public class MethodComplexity {
 		int wcdtp;
 
 		ArrayList<StatementLine> statementList = new ArrayList<StatementLine>();
-
+		AccessFileServlet accessFileServlet = new AccessFileServlet();
 		String[] divideBySpaces;
 		if (functionList.size() == 0) {
 			return null;
@@ -254,7 +260,7 @@ public class MethodComplexity {
 							break;
 						} else {
 							System.out.println("Composite return type parameters");
-							wcdtp += 2;
+							wcdtp += AccessFileServlet.userInputPrimitiveParaWeight;
 						}
 					}
 				}
