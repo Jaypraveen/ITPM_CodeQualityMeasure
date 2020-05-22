@@ -88,10 +88,8 @@
 			</div>
 			<br> <br>
 			<div class="form-group">
-				<span class="help-block">If your file is zipped, Click here</span> <a
-					href="unzipFiles.jsp"><button class="btn btn-secondary"
-						type="button" title="Use this if you have a zipped file">
-						Unzip File</button></a>
+				<span class="help-block">If your file is zipped, </span> <a
+					href="unzipFiles.jsp" style="text-decoration: none;">Click here</a>
 			</div>
 
 			<div class="form-group container-fluid"
