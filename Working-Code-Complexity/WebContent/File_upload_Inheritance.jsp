@@ -257,7 +257,7 @@ a:hover:not (.active ) {
 
 	<!-- Inheritance Complexity -->
 	<!-- Weight Changing -->
-	<form action="AccessFilesServlet" method="post" class="form-group" style="width: 50%; margin-left: 395px;">
+	<form action="CustomWeightsServlet" method="post" class="form-group" style="width: 50%; margin-left: 395px;">
 				<table class="table table-responsive-lg">
 					<caption style="caption-side: top; text-align:center; font-size:x-large;">Weights related to the Inheritance factor</caption>
 					<thead class="table-dark">

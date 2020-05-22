@@ -265,7 +265,6 @@ a:hover:not (.active ) {
 			style="padding-left: -79px; margin-left: 100px; font-family: century gothic; font-size: 50px; margin-top: 10px">
 			<font color="#00376c">Complexity of Control Structure</font>
 		</h1>
-
 	</div>
 
 	<form action="AccessFilesServlet" method="post" class="form-group"

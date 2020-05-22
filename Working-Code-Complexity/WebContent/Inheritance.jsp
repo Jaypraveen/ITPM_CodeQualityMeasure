@@ -77,7 +77,8 @@ li a:hover:not (.active ) {
 	
 	<h1 style="color:#FFFAFA; font-size:64px; text-align: center; ">Inheritance</h1>
 	<!-- Page Navigation Buttons  -->
-	<div style="margin-left: 436px; margin-top: 26px;">
+	
+	<div style="text-align: center; margin-top: 26px;">
 		<a class="btn btn-primary" href="index.jsp" role="button">Size,Variable,Method</a>
 	    <a class="btn btn-primary" href="ControlStructure.jsp" role="button">Control Structures</a>
 	    <a class="btn btn-primary" href="Inheritance.jsp" role="button">Inheritance</a>
@@ -116,7 +117,7 @@ li a:hover:not (.active ) {
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -69px; width: 81%; font-weight: normal;">
 					<label for="code">Enter Code:</label>
-					<textarea class="form-control" rows="10" id="code" name="code"></textarea>
+					<textarea class="form-control" rows="10" id="code" name="code" style="text-align: center;"></textarea>
 				</div>
 			</div>
 			
