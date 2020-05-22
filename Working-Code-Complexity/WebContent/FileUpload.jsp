@@ -206,8 +206,8 @@ $(function(){
    
  
   </nav-->
-
-	<div  class="form-group mt-3" style="color: white; margin-left: 472px;">
+<div>
+	<div  class="form-group mt-3" style="color: white; margin-left: 618px;">
 		<h1 style="font-size:25x;">UPLOAD YOUR FILE:</h1>
 		<input type="file" name="FileUpload">
 	</div>
@@ -217,16 +217,16 @@ $(function(){
 
 		<br>
 
-		
-		<div align=center class="form-group mt-3">
-
-			<textarea rows="5" cols="80" name="code" required></textarea>
+		<label for="code" style="color: white; margin-left: 626px; font-size:25px;">Enter Code:</label>
+		<div align=center class="form-group mt-3" style=" margin-left: 274px; width: 78%; font-weight: normal;">
+             
+			<textarea style="width: 53%;" rows="6" cols="80" name="code" required></textarea>
 		</div>
-		
+		</div>
 
-		<select id="selectOption" name="selectFactor" onchange="setDiv()"
+		<select id="selectOption" name="selectFactor" onchange="setDiv()" style="margin-left: 627px;"
 			required>
-			<option value="">~Select~</option>
+			<option value="">~Select~</option><br>
 			<option value="coupling">Coupling</option>
 		</select>
 
@@ -235,21 +235,21 @@ $(function(){
 
 
 
-		<div class="hideDiv" style="margin: auto; width: 600px"
+		<div class="hideDiv" style="margin: auto; width: 600px; color: white;"
 			id="couplingFactor">
 			<br>
-			<h5 align="center">
+			<h5 align="center" style="color: white;">
 				<b>Weight To Coupling
 			</h5>
 			
-				<table class="table1">
+				<table class="table table-bordered" style="color: white;">
 					<thead class="thead-light">
 						<tr>
 							<th>Coupling Type</th>
 							<th>Weight</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody >
 						<tr>
 							<td>A recursive call</td>
 							<td><select class="form-control" name="recursive">
@@ -411,7 +411,7 @@ $(function(){
 		</div>
 
 
-		<button type="submit" class="" value="Save">Save</button>
+		<button type="submit" class="btn calculate-button" value="Save" >Calculate</button>
 
 	</form>
 
