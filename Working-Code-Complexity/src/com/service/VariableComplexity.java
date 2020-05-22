@@ -95,6 +95,8 @@ public class VariableComplexity {
 				statementList.add(new StatementLine(y, 0));
 			}
 		}
+		
+		
 
 		for (y = 1; y <= statementList.size(); y++) {
 			for (z = 0; z < statementList.size(); z++) {

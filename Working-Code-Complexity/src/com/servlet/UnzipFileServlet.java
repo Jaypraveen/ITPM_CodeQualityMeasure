@@ -86,7 +86,8 @@ public class UnzipFileServlet extends HttpServlet {
 			zis.close();
 
 			PrintWriter printWriter = response.getWriter();
-			printWriter.println("File successfully unziped. Please Choose the unzipped file from your desktop.");
+			//printWriter.println("File successfully unziped. Please Choose the unzipped file from your desktop.");
+			response.sendRedirect("index.jsp");
 
 		} else if (unzip.contains(".rar")) {
 			System.out.println("rar");

@@ -48,31 +48,47 @@ li a {
 li
 
 
+
+
 a
+
+
 
 
 :hover
 
 
+
+
 :not
 
+
  
+
 
 (
 .active
 
+
  
+
 
 )
 {
 background-color
 
 
+
+
 :
+
 
  
 
+
 #f2f5f4
+
+
 
 
 ;
@@ -98,43 +114,60 @@ li a {
 	padding: 14px 16px;
 	text-decoration: none;
 }
-
 li
 
 
-a:hover:not (.active ) {
-	background-color: #f2f5f4;
+
+
+a
+:hover
+:not
+ 
+(
+.active
+ 
+)
+{
+background-color
+:
+ 
+#f2f5f4
+;
+
+
 }
 </style>
 <title>Code Quality Measure</title>
 </head>
 <body>
-<div>
-<ul>
-		<li><a href="index.jsp" style="text-decoration: none;">Home</a></li>
+	<div>
+		<ul>
+			<li><a href="index.jsp" style="text-decoration: none;">Home</a></li>
 
-	</ul>
-</div>
+		</ul>
+	</div>
 	<br>
-	
-		<div style="text-align: center;">
+
+	<div style="text-align: center;">
 		<h1>Unzip Files</h1>
-		</div>
-	
+	</div>
+
 	<br>
 	<br>
-	<div class="container-fluid" style="text-align: center; margin-top: 10%">
+	<div class="container-fluid"
+		style="text-align: center; margin-top: 10%">
 		<form action="UnzipFileServlet" method="post">
 			<div class="custom-file col-4">
-				<input type="file" class="custom-file-input " id="unzip" name="unzip">
-				<label class="custom-file-label" for="customFile">Choose
-					file</label> <br> <br>
-				<button class="btn btn-dark" name="unzipButton" id="unzipButton">Unzip</button>
+				<input type="file" class="custom-file-input " id="unzip"
+					name="unzip" required> <label class="custom-file-label"
+					for="customFile">Choose file</label> <br> <br>
+				<button class="btn btn-dark" type="submit" name="unzipButton"
+					id="unzipButton" data-toggle="modal" data-target="#exampleModal">Unzip</button>
 			</div>
 		</form>
 	</div>
-	<div class="fixed-bottom" style="height: 20px; background-color: #2c2e2d;">
-	
-	</div>
+
+	<div class="fixed-bottom"
+		style="height: 20px; background-color: #2c2e2d;"></div>
 </body>
 </html>
