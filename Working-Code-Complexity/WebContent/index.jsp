@@ -120,6 +120,8 @@
 				<button class="btn clear-button" type="reset">Clean</button>
 			</div>
 
+			<p>*To change weights, use the below tables. After you change the values, press calculate button</p>
+
 			<div class="container-fluid">
 				<table class="table table-responsive-lg">
 					<caption
