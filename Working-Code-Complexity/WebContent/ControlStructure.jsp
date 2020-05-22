@@ -125,7 +125,7 @@ li a:hover:not (.active ) {
 				<div class="form-group"
 					style="font-size: 25px; margin-left: -69px; width: 81%; font-weight: normal;">
 					<label style="color: white;" for="code">Enter Code:</label>
-					<textarea class="form-control" rows="10" id="code" name="code" style="text-align: center;"></textarea>
+					<textarea class="form-control" rows="10" id="code" name="code"></textarea>
 				</div>
 			</div>
 			
